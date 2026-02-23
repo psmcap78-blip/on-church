@@ -1,0 +1,1755 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>On 양화교회</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black: #FFFFFF;
+  --dark: #F7F5F2;
+  --dark2: #FFFFFF;
+  --dark3: #EEE9E1;
+  --border: rgba(0,0,0,0.09);
+  --border2: rgba(0,0,0,0.14);
+  --white: #1A1208;
+  --off-white: #F5F3EF;
+  --muted: rgba(30,20,5,0.55);
+  --muted2: rgba(30,20,5,0.35);
+  --gold: #A07830;
+  --gold2: #7A5A20;
+  --gold-dim: rgba(160,120,48,0.10);
+  --gold-border: rgba(160,120,48,0.28);
+  --accent: #A07830;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: #F7F5F2;
+  color: var(--white);
+  font-family: 'Noto Sans KR', sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── HEADER ─── */
+header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 200;
+  padding: 0 48px;
+  transition: background 0.4s, border-color 0.4s;
+}
+
+header.scrolled {
+  background: rgba(247,245,242,0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+
+.header-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--white);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.logo-on {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  color: var(--gold);
+  font-size: 1.25rem;
+}
+
+.logo-cross {
+  color: var(--gold);
+  margin: 0 6px;
+  font-size: 0.7rem;
+  opacity: 0.6;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.main-nav a {
+  padding: 8px 16px;
+  font-size: 0.82rem;
+  color: var(--muted);
+  text-decoration: none;
+  border-radius: 8px;
+  transition: color 0.2s;
+  white-space: nowrap;
+  letter-spacing: 0.01em;
+}
+
+.main-nav a:hover { color: var(--white); }
+
+.nav-register {
+  margin-left: 8px;
+  padding: 9px 22px !important;
+  background: var(--gold) !important;
+  color: #FFFFFF !important;
+  border-radius: 50px !important;
+  font-weight: 700 !important;
+  font-size: 0.8rem !important;
+  transition: opacity 0.2s !important;
+}
+
+.nav-register:hover { opacity: 0.85 !important; }
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.hamburger span {
+  width: 22px;
+  height: 1.5px;
+  background: var(--white);
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+
+/* ─── HERO ─── */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 120px 48px 80px;
+  gap: 80px;
+  position: relative;
+}
+
+.hero::after {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background:
+    radial-gradient(ellipse at 70% 20%, rgba(160,120,48,0.06) 0%, transparent 60%),
+    radial-gradient(ellipse at 10% 80%, rgba(160,120,48,0.04) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.hero-left { animation: fadeLeft 1s ease both; }
+
+@keyframes fadeLeft {
+  from { opacity: 0; transform: translateX(-30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--border2);
+  border-radius: 50px;
+  padding: 6px 16px;
+  font-size: 0.72rem;
+  color: var(--muted);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 36px;
+}
+
+.hero-tag::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background: var(--gold);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
+
+.hero-title {
+  font-family: 'Noto Serif KR', serif;
+  font-size: clamp(2.4rem, 4vw, 3.6rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  margin-bottom: 24px;
+  color: #1A1208;
+}
+
+.hero-title .en {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  color: var(--gold);
+}
+
+.hero-verse {
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.9;
+  margin-bottom: 48px;
+  padding-left: 16px;
+  border-left: 2px solid var(--gold);
+}
+
+.hero-verse strong {
+  display: block;
+  color: rgba(26,18,8,0.75);
+  font-weight: 400;
+  font-family: 'Noto Serif KR', serif;
+  font-size: 0.95rem;
+  margin-bottom: 4px;
+}
+
+.hero-btns {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.btn-gold {
+  padding: 14px 32px;
+  background: var(--gold);
+  color: #FFFFFF;
+  border-radius: 50px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.3s;
+  letter-spacing: 0.02em;
+}
+
+.btn-gold:hover {
+  background: var(--gold2);
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  padding: 14px 32px;
+  border: 1px solid var(--border2);
+  color: var(--white);
+  border-radius: 50px;
+  font-size: 0.88rem;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.btn-outline:hover {
+  border-color: rgba(0,0,0,0.25);
+  background: rgba(0,0,0,0.04);
+}
+
+/* Hero Right — Worship Card */
+.hero-right {
+  animation: fadeRight 1s 0.2s ease both;
+}
+
+@keyframes fadeRight {
+  from { opacity: 0; transform: translateX(30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.worship-preview {
+  background: #FFFFFF;
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+}
+
+.worship-preview-header {
+  padding: 28px 32px 20px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.wp-title {
+  font-size: 0.72rem;
+  color: var(--muted);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.live-dot {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.72rem;
+  color: var(--gold);
+}
+
+.live-dot::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background: #E84040;
+  border-radius: 50%;
+  animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.worship-items {
+  padding: 8px 0;
+}
+
+.worship-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 32px;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.2s;
+  cursor: default;
+}
+
+.worship-row:last-child { border-bottom: none; }
+.worship-row:hover { background: rgba(0,0,0,0.02); }
+
+.wr-day {
+  width: 44px;
+  height: 44px;
+  background: var(--gold-dim);
+  border: 1px solid var(--gold-border);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.72rem;
+  color: var(--gold);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.wr-info { flex: 1; }
+
+.wr-name {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 3px;
+}
+
+.wr-detail {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.wr-time {
+  font-size: 0.78rem;
+  color: var(--gold);
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+/* Devotion strip */
+.devotion-strip {
+  background: #FFFFFF;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 18px 48px;
+  overflow: hidden;
+}
+
+.devotion-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.d-label {
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+  padding-right: 24px;
+  border-right: 1px solid var(--border2);
+}
+
+.d-verse {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 0.9rem;
+  color: rgba(26,18,8,0.75);
+  flex: 1;
+}
+
+.d-ref {
+  font-size: 0.75rem;
+  color: var(--muted);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ─── SECTION BASE ─── */
+.section {
+  padding: 100px 48px;
+}
+
+.inner {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.s-label {
+  font-size: 0.68rem;
+  letter-spacing: 0.3em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.s-title {
+  font-family: 'Noto Serif KR', serif;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 700;
+  line-height: 1.25;
+  margin-bottom: 16px;
+  letter-spacing: -0.01em;
+  color: #1A1208;
+}
+
+.s-desc {
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.9;
+  max-width: 480px;
+}
+
+.s-head { margin-bottom: 56px; }
+.s-head.center { text-align: center; }
+.s-head.center .s-desc { margin: 0 auto; }
+
+/* Thin divider */
+.rule {
+  height: 1px;
+  background: var(--border);
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* ─── SERMONS ─── */
+.section-dark { background: #EEE9E1; }
+
+.video-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.video-item {
+  background: #FFFFFF;
+  padding: 28px;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.video-item:hover { background: #F7F5F2; }
+
+.v-thumb {
+  width: 100px;
+  height: 64px;
+  background: #EEE9E1;
+  border-radius: 8px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.v-thumb::after {
+  content: '▶';
+  font-size: 0.9rem;
+  color: var(--gold);
+}
+
+.v-info { flex: 1; min-width: 0; }
+
+.v-title {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--white);
+  line-height: 1.5;
+  margin-bottom: 6px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.v-meta {
+  font-size: 0.72rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.v-date {
+  font-size: 0.7rem;
+  color: var(--muted2);
+  margin-top: 8px;
+}
+
+.more-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 28px;
+  font-size: 0.82rem;
+  color: var(--gold);
+  text-decoration: none;
+  transition: gap 0.2s;
+}
+
+.more-link:hover { gap: 12px; }
+
+/* ─── CANAAN ─── */
+.canaan-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.canaan-left .s-desc { max-width: 440px; margin-bottom: 32px; }
+
+.canaan-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 36px;
+}
+
+.c-tag {
+  padding: 6px 14px;
+  border: 1px solid var(--border2);
+  border-radius: 50px;
+  font-size: 0.78rem;
+  color: var(--muted);
+  transition: all 0.2s;
+}
+
+.c-tag:hover {
+  border-color: var(--gold-border);
+  color: var(--gold);
+}
+
+.canaan-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.c-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 22px 24px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  transition: border-color 0.2s;
+  cursor: default;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.c-card:hover { border-color: var(--gold-border); }
+
+.c-icon {
+  width: 40px;
+  height: 40px;
+  background: var(--gold-dim);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.c-title {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+
+.c-desc {
+  font-size: 0.78rem;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+/* ─── COMMUNITY ─── */
+.community-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.comm-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 36px;
+  transition: all 0.3s;
+  cursor: default;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+}
+
+.comm-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.comm-card.gold::before { background: linear-gradient(90deg, var(--gold), transparent); }
+.comm-card.sage::before { background: linear-gradient(90deg, #5A8A57, transparent); }
+
+.comm-card:hover { border-color: var(--border2); }
+.comm-card:hover::before { opacity: 1; }
+
+.comm-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 50px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.badge-gold { background: var(--gold-dim); color: var(--gold); border: 1px solid var(--gold-border); }
+.badge-green { background: rgba(90,138,87,0.12); color: #3A7A37; border: 1px solid rgba(90,138,87,0.25); }
+
+.comm-title {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #1A1208;
+}
+
+.comm-desc {
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.9;
+  margin-bottom: 28px;
+}
+
+.comm-details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.comm-detail {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.comm-detail::before {
+  content: '—';
+  color: var(--gold);
+  font-size: 0.7rem;
+}
+
+/* ─── PRAYER ─── */
+.prayer-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.prayer-form-wrap {
+  background: #FFFFFF;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 36px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+}
+
+.form-group { margin-bottom: 16px; }
+
+.form-group label {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-bottom: 8px;
+  letter-spacing: 0.05em;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 12px 16px;
+  background: #F7F5F2;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--white);
+  font-size: 0.88rem;
+  font-family: 'Noto Sans KR', sans-serif;
+  outline: none;
+  transition: border-color 0.2s;
+  -webkit-appearance: none;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--gold-border);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: var(--muted2);
+}
+
+.form-group select option { background: #F7F5F2; color: #1A1208; }
+
+.form-group textarea {
+  height: 120px;
+  resize: vertical;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.btn-form {
+  width: 100%;
+  padding: 14px;
+  background: var(--gold);
+  color: #FFFFFF;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  font-family: 'Noto Sans KR', sans-serif;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  margin-top: 4px;
+}
+
+.btn-form:hover { opacity: 0.85; }
+
+.prayer-list { display: flex; flex-direction: column; gap: 12px; }
+
+.prayer-item {
+  background: #FFFFFF;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 18px 20px;
+  transition: border-color 0.2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.prayer-item:hover { border-color: var(--border2); }
+
+.prayer-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.prayer-name {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--gold);
+}
+
+.prayer-tag-small {
+  font-size: 0.65rem;
+  padding: 2px 8px;
+  background: var(--gold-dim);
+  color: var(--gold);
+  border-radius: 50px;
+}
+
+.prayer-text {
+  font-size: 0.84rem;
+  color: rgba(26,18,8,0.65);
+  line-height: 1.7;
+}
+
+/* ─── BIBLE ─── */
+.bible-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.b-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 24px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.25s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.b-card:hover {
+  background: #F7F5F2;
+  border-color: var(--gold-border);
+  transform: translateY(-2px);
+}
+
+.b-icon { font-size: 1.6rem; margin-bottom: 10px; display: block; }
+
+.b-name {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+
+.b-sub { font-size: 0.72rem; color: var(--muted); }
+
+/* ─── NOTICE ─── */
+.notice-list { display: flex; flex-direction: column; }
+
+.n-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  transition: padding-left 0.2s;
+}
+
+.n-item:first-child { border-top: 1px solid var(--border); }
+.n-item:hover { padding-left: 8px; }
+
+.n-badge {
+  padding: 3px 10px;
+  border-radius: 50px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.nb-new { background: var(--gold-dim); color: var(--gold); border: 1px solid var(--gold-border); }
+.nb-event { background: rgba(90,138,87,0.12); color: #3A7A37; border: 1px solid rgba(90,138,87,0.25); }
+.nb-notice { background: rgba(0,0,0,0.04); color: var(--muted); border: 1px solid var(--border); }
+
+.n-title {
+  font-size: 0.88rem;
+  color: rgba(26,18,8,0.8);
+  flex: 1;
+  transition: color 0.2s;
+}
+
+.n-item:hover .n-title { color: var(--white); }
+
+.n-date {
+  font-size: 0.72rem;
+  color: var(--muted2);
+  flex-shrink: 0;
+}
+
+/* ─── OFFERING ─── */
+.offering-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.offering-main {
+  background: var(--gold);
+  border-radius: 20px;
+  padding: 44px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.offering-main h3 {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 1.6rem;
+  color: #FFFFFF;
+  font-weight: 700;
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+.offering-main p {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.8;
+  margin-bottom: 32px;
+}
+
+.offering-accounts { display: flex; flex-direction: column; gap: 10px; }
+
+.acc-item {
+  background: rgba(255,255,255,0.2);
+  border-radius: 12px;
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.acc-icon { font-size: 1.1rem; }
+
+.acc-name {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 2px;
+}
+
+.acc-sub {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.7);
+}
+
+.offering-info-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.of-info-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 24px;
+  flex: 1;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.of-info-card h4 {
+  font-size: 0.82rem;
+  color: var(--gold);
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.of-info-card p {
+  font-size: 0.8rem;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+/* ─── FOOTER ─── */
+footer {
+  background: #1A1208;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding: 64px 48px 40px;
+}
+
+.footer-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 48px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.f-logo {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  color: #FFFFFF;
+}
+
+.f-logo .f-on {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  color: var(--gold);
+  font-size: 1.2rem;
+}
+
+.f-about {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.9;
+  margin-bottom: 24px;
+}
+
+.f-socials { display: flex; gap: 8px; }
+
+.f-social {
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.f-social:hover {
+  border-color: var(--gold-border);
+  background: var(--gold-dim);
+}
+
+.f-col h4 {
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  color: rgba(255,255,255,0.35);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.f-col a {
+  display: block;
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.45);
+  text-decoration: none;
+  margin-bottom: 12px;
+  transition: color 0.2s;
+}
+
+.f-col a:hover { color: #FFFFFF; }
+
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.f-copy { font-size: 0.75rem; color: rgba(255,255,255,0.25); }
+
+.f-verse {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 0.78rem;
+  color: rgba(200,169,110,0.4);
+  font-style: italic;
+}
+
+/* ─── MOBILE NAV ─── */
+.mob-nav {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: #F7F5F2;
+  z-index: 190;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.mob-nav.open { display: flex; }
+
+.mob-close {
+  position: absolute;
+  top: 24px; right: 32px;
+  font-size: 1.4rem;
+  cursor: pointer;
+  color: var(--muted);
+  transition: color 0.2s;
+}
+
+.mob-close:hover { color: var(--white); }
+
+.mob-nav a {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 1.6rem;
+  color: rgba(26,18,8,0.7);
+  text-decoration: none;
+  padding: 12px 40px;
+  border-radius: 12px;
+  transition: color 0.2s;
+}
+
+.mob-nav a:hover { color: var(--gold); }
+
+/* ─── REVEAL ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.75s ease, transform 0.75s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 1024px) {
+  .hero { grid-template-columns: 1fr; gap: 48px; padding-top: 140px; }
+  .hero-right { display: none; }
+  .canaan-section { grid-template-columns: 1fr; }
+  .community-grid { grid-template-columns: 1fr; }
+  .footer-top { grid-template-columns: 1fr 1fr; }
+  .offering-layout { grid-template-columns: 1fr; }
+  .prayer-layout { grid-template-columns: 1fr; }
+  .video-grid { grid-template-columns: 1fr; }
+  .bible-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  header, .section, .devotion-strip, footer { padding-left: 24px; padding-right: 24px; }
+  .hero { padding-left: 24px; padding-right: 24px; }
+  .main-nav { display: none; }
+  .hamburger { display: flex; }
+  .footer-top { grid-template-columns: 1fr; }
+  .bible-grid { grid-template-columns: repeat(2, 1fr); }
+  .form-row { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="header">
+  <div class="header-inner">
+    <a href="#" class="logo">
+      <span class="logo-on">On</span><span class="logo-cross">✝</span>양화교회
+    </a>
+    <nav class="main-nav">
+      <a href="#worship">예배 안내</a>
+      <a href="#sermons">설교 영상</a>
+      <a href="#canaan">가나안 성도</a>
+      <a href="#community">구역·청년</a>
+      <a href="#prayer">기도 제목</a>
+      <a href="#bible">성경</a>
+      <a href="#notice">소식</a>
+      <a href="#canaan" class="nav-register">등록하기</a>
+    </nav>
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</header>
+
+<!-- MOBILE NAV -->
+<div class="mob-nav" id="mobNav">
+  <span class="mob-close" id="mobClose">✕</span>
+  <a href="#worship" onclick="closeMob()">예배 안내</a>
+  <a href="#sermons" onclick="closeMob()">설교 영상</a>
+  <a href="#canaan" onclick="closeMob()">가나안 성도</a>
+  <a href="#community" onclick="closeMob()">구역·청년</a>
+  <a href="#prayer" onclick="closeMob()">기도 제목</a>
+  <a href="#bible" onclick="closeMob()">성경</a>
+  <a href="#notice" onclick="closeMob()">소식</a>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-tag">On 양화교회 · 온라인 인터넷 교회</div>
+    <h1 class="hero-title">
+      교회가<br>
+      <span class="en">어디에나</span><br>
+      있기를 원합니다
+    </h1>
+    <div class="hero-verse">
+      <strong>"두 세 사람이 내 이름으로 모인 곳에는<br>나도 그들 중에 있느니라"</strong>
+      마태복음 18:20
+    </div>
+    <div class="hero-btns">
+      <a href="#worship" class="btn-gold">이번 주 예배 참여 →</a>
+      <a href="#canaan" class="btn-outline">가나안 성도 등록</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="worship-preview">
+      <div class="worship-preview-header">
+        <span class="wp-title">예배 일정</span>
+        <span class="live-dot">LIVE 스트리밍</span>
+      </div>
+      <div class="worship-items">
+        <div class="worship-row">
+          <div class="wr-day">일</div>
+          <div class="wr-info">
+            <div class="wr-name">주일 예배</div>
+            <div class="wr-detail">유튜브 라이브</div>
+          </div>
+          <div class="wr-time">10:30 – 11:30</div>
+        </div>
+        <div class="worship-row">
+          <div class="wr-day">수</div>
+          <div class="wr-info">
+            <div class="wr-name">수요 예배</div>
+            <div class="wr-detail">유튜브 라이브</div>
+          </div>
+          <div class="wr-time">19:30 – 20:30</div>
+        </div>
+        <div class="worship-row">
+          <div class="wr-day">매일</div>
+          <div class="wr-info">
+            <div class="wr-name">새벽 예배</div>
+            <div class="wr-detail">줌(Zoom) 진행</div>
+          </div>
+          <div class="wr-time">05:00 – 06:00</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DEVOTION STRIP -->
+<div class="devotion-strip">
+  <div class="devotion-inner">
+    <div class="d-label">오늘의 묵상</div>
+    <div class="d-verse">"너희는 마음에 근심하지 말라 하나님을 믿으니 또 나를 믿으라"</div>
+    <div class="d-ref">요한복음 14:1</div>
+  </div>
+</div>
+
+<!-- WORSHIP SECTION -->
+<div class="section" id="worship">
+  <div class="inner">
+    <div class="s-head reveal">
+      <div class="s-label">Worship Schedule</div>
+      <h2 class="s-title">예배 안내</h2>
+      <p class="s-desc">어디에 계시든 함께 예배드릴 수 있습니다. 매주 유튜브 라이브로 실시간 진행됩니다.</p>
+    </div>
+
+    <div class="worship-preview reveal" style="border-radius: 20px; overflow: hidden; max-width: 700px;">
+      <div class="worship-preview-header" style="padding: 24px 36px;">
+        <span class="wp-title">On 양화교회 · 정규 예배</span>
+        <span class="live-dot">매주 정기 진행</span>
+      </div>
+      <div class="worship-items">
+        <div class="worship-row" style="padding: 24px 36px;">
+          <div class="wr-day">주일</div>
+          <div class="wr-info">
+            <div class="wr-name">주일 예배</div>
+            <div class="wr-detail">유튜브 라이브 · 매주 일요일</div>
+          </div>
+          <div class="wr-time">오전 10:30 – 11:30</div>
+        </div>
+        <div class="worship-row" style="padding: 24px 36px;">
+          <div class="wr-day">수요</div>
+          <div class="wr-info">
+            <div class="wr-name">수요 예배</div>
+            <div class="wr-detail">유튜브 라이브 · 매주 수요일</div>
+          </div>
+          <div class="wr-time">저녁 7:30 – 8:30</div>
+        </div>
+        <div class="worship-row" style="padding: 24px 36px;">
+          <div class="wr-day">새벽</div>
+          <div class="wr-info">
+            <div class="wr-name">새벽 예배</div>
+            <div class="wr-detail">줌(Zoom) · 월요일 – 토요일</div>
+          </div>
+          <div class="wr-time">오전 5:00 – 6:00</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: 24px;" class="reveal">
+      <a href="#" class="btn-gold" style="font-size: 0.85rem; padding: 12px 28px;">유튜브 채널 바로가기 →</a>
+    </div>
+  </div>
+</div>
+
+<div class="rule"></div>
+
+<!-- SERMONS -->
+<div class="section section-dark" id="sermons">
+  <div class="inner">
+    <div class="s-head reveal">
+      <div class="s-label">Sermon Archive</div>
+      <h2 class="s-title">설교 영상 모아보기</h2>
+      <p class="s-desc">언제 어디서든 다시 들을 수 있습니다. 말씀이 필요한 순간 찾아오세요.</p>
+    </div>
+
+    <div class="video-grid reveal">
+      <div class="video-item">
+        <div class="v-thumb"></div>
+        <div class="v-info">
+          <div class="v-title">하나님의 사랑 안에 거하라</div>
+          <div class="v-meta">요한일서 4:16 · 주일 설교</div>
+          <div class="v-date">2025.04.06</div>
+        </div>
+      </div>
+      <div class="video-item">
+        <div class="v-thumb"></div>
+        <div class="v-info">
+          <div class="v-title">두려워하지 말라, 내가 너와 함께하리라</div>
+          <div class="v-meta">이사야 41:10 · 주일 설교</div>
+          <div class="v-date">2025.03.30</div>
+        </div>
+      </div>
+      <div class="video-item">
+        <div class="v-thumb"></div>
+        <div class="v-info">
+          <div class="v-title">부활의 소망으로 살아가는 삶</div>
+          <div class="v-meta">로마서 8:11 · 부활주일 특별 설교</div>
+          <div class="v-date">2025.03.23</div>
+        </div>
+      </div>
+      <div class="video-item">
+        <div class="v-thumb"></div>
+        <div class="v-info">
+          <div class="v-title">기도는 관계입니다</div>
+          <div class="v-meta">마태복음 6:9-13 · 수요 설교</div>
+          <div class="v-date">2025.03.19</div>
+        </div>
+      </div>
+    </div>
+
+    <a href="#" class="more-link reveal">모든 설교 영상 보기 →</a>
+  </div>
+</div>
+
+<div class="rule"></div>
+
+<!-- CANAAN -->
+<div class="section" id="canaan">
+  <div class="inner">
+    <div class="canaan-section reveal">
+      <div class="canaan-left">
+        <div class="s-label">For 가나안 성도</div>
+        <h2 class="s-title">교회를 떠났지만<br>하나님은 놓지<br>않으셨나요?</h2>
+        <p class="s-desc">상처가 있어도 괜찮습니다. On 양화교회는 당신이 어디 있든 함께하고 싶습니다.</p>
+        <div class="canaan-tags">
+          <span class="c-tag">교회에 상처받은 분</span>
+          <span class="c-tag">집에서 신앙생활 하는 분</span>
+          <span class="c-tag">신앙이 식어가는 분</span>
+          <span class="c-tag">교회가 멀리 있는 분</span>
+          <span class="c-tag">신앙에 의문이 생긴 분</span>
+        </div>
+        <a href="#" class="btn-gold">가나안 성도 등록하기 →</a>
+      </div>
+      <div class="canaan-cards">
+        <div class="c-card">
+          <div class="c-icon">💬</div>
+          <div>
+            <div class="c-title">1:1 온라인 상담</div>
+            <div class="c-desc">목사님과 온라인으로 만납니다. 신앙 고민, 삶의 어려움, 무엇이든 나눌 수 있습니다.</div>
+          </div>
+        </div>
+        <div class="c-card">
+          <div class="c-icon">📧</div>
+          <div>
+            <div class="c-title">주간 말씀 뉴스레터</div>
+            <div class="c-desc">매주 월요일, 주일 설교 요약과 이번 주 묵상 말씀을 이메일로 보내드립니다.</div>
+          </div>
+        </div>
+        <div class="c-card">
+          <div class="c-icon">🙏</div>
+          <div>
+            <div class="c-title">온라인 예배 참여</div>
+            <div class="c-desc">등록 없이도 자유롭게 예배에 참여할 수 있습니다. 준비됐을 때 등록해 주세요.</div>
+          </div>
+        </div>
+        <div class="c-card">
+          <div class="c-icon">💝</div>
+          <div>
+            <div class="c-title">온라인 심방</div>
+            <div class="c-desc">필요하시면 목사님이 줌으로 직접 찾아갑니다. 편한 시간에 요청해 주세요.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="rule"></div>
+
+<!-- COMMUNITY -->
+<div class="section section-dark" id="community">
+  <div class="inner">
+    <div class="s-head reveal">
+      <div class="s-label">Community</div>
+      <h2 class="s-title">구역 모임 & 청년 모임</h2>
+      <p class="s-desc">온라인으로 연결되는 작은 공동체. 함께할 때 더 깊어지는 신앙입니다.</p>
+    </div>
+
+    <div class="community-grid reveal">
+      <div class="comm-card gold">
+        <span class="comm-badge badge-gold">구역 모임</span>
+        <div class="comm-title">온라인 구역 모임</div>
+        <div class="comm-desc">지역과 상황에 관계없이 온라인으로 함께 모이는 구역 모임입니다. 말씀 나눔과 기도, 삶을 함께하는 작은 공동체를 경험하세요.</div>
+        <div class="comm-details">
+          <div class="comm-detail">줌(Zoom)으로 진행</div>
+          <div class="comm-detail">주 1회 정기 모임</div>
+          <div class="comm-detail">5~8명 소규모 운영</div>
+          <div class="comm-detail">모임 시간은 그룹별 협의</div>
+        </div>
+        <a href="#" class="btn-gold" style="font-size: 0.82rem; padding: 12px 24px; display: inline-block;">구역 모임 신청 →</a>
+      </div>
+
+      <div class="comm-card sage">
+        <span class="comm-badge badge-green">청년 모임</span>
+        <div class="comm-title">온라인 청년 모임</div>
+        <div class="comm-desc">20~30대 청년들이 함께 모이는 온라인 청년부입니다. 신앙과 삶, 진로와 관계에 대해 함께 나누며 성장합니다.</div>
+        <div class="comm-details">
+          <div class="comm-detail">줌(Zoom) + 카카오톡으로 소통</div>
+          <div class="comm-detail">주 1회 정기 온라인 모임</div>
+          <div class="comm-detail">20~30대 청년 누구나</div>
+          <div class="comm-detail">자유롭고 솔직한 나눔</div>
+        </div>
+        <a href="#" class="btn-outline" style="font-size: 0.82rem; padding: 12px 24px; display: inline-block;">청년 모임 신청 →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="rule"></div>
+
+<!-- PRAYER -->
+<div class="section" id="prayer">
+  <div class="inner">
+    <div class="s-head center reveal">
+      <div class="s-label">Prayer Request</div>
+      <h2 class="s-title">기도 제목 나눔</h2>
+      <p class="s-desc">혼자 지지 말고, 함께 기도하겠습니다.</p>
+    </div>
+
+    <div class="prayer-layout reveal">
+      <div class="prayer-form-wrap">
+        <div class="form-row">
+          <div class="form-group">
+            <label>이름 (익명 가능)</label>
+            <input type="text" placeholder="홍길동 or 익명">
+          </div>
+          <div class="form-group">
+            <label>공개 범위</label>
+            <select>
+              <option>목사님께만 (비공개)</option>
+              <option>전체 공개</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>기도 제목</label>
+          <textarea placeholder="기도 제목을 자유롭게 적어주세요. 무엇이든 괜찮습니다."></textarea>
+        </div>
+        <button class="btn-form">기도 제목 올리기</button>
+      </div>
+
+      <div class="prayer-list">
+        <div class="prayer-item">
+          <div class="prayer-meta">
+            <span class="prayer-name">집사님 A</span>
+            <span class="prayer-tag-small">공개</span>
+          </div>
+          <div class="prayer-text">남편의 건강 회복을 위해 기도해 주세요. 최근 입원 중입니다.</div>
+        </div>
+        <div class="prayer-item">
+          <div class="prayer-meta">
+            <span class="prayer-name">익명</span>
+            <span class="prayer-tag-small">공개</span>
+          </div>
+          <div class="prayer-text">취업 준비 중입니다. 하나님의 인도하심을 구합니다.</div>
+        </div>
+        <div class="prayer-item">
+          <div class="prayer-meta">
+            <span class="prayer-name">형제 B</span>
+            <span class="prayer-tag-small">공개</span>
+          </div>
+          <div class="prayer-text">오랫동안 교회를 떠났다가 이곳을 찾았습니다. 신앙 회복을 위해 기도해 주세요.</div>
+        </div>
+        <div class="prayer-item">
+          <div class="prayer-meta">
+            <span class="prayer-name">자매 C</span>
+            <span class="prayer-tag-small">공개</span>
+          </div>
+          <div class="prayer-text">부모님의 구원을 위해 오랫동안 기도하고 있습니다. 함께해 주세요.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="rule"></div>
+
+<!-- BIBLE -->
+<div class="section section-dark" id="bible">
+  <div class="inner">
+    <div class="s-head reveal">
+      <div class="s-label">Bible Reading</div>
+      <h2 class="s-title">성경통독 & 성경 개관</h2>
+      <p class="s-desc">성경을 처음부터 끝까지, 또는 원하는 성경부터 시작해보세요.</p>
+    </div>
+
+    <div class="bible-grid reveal">
+      <div class="b-card">
+        <span class="b-icon">📅</span>
+        <div class="b-name">1년 성경통독</div>
+        <div class="b-sub">매일 분량 제공</div>
+      </div>
+      <div class="b-card">
+        <span class="b-icon">📖</span>
+        <div class="b-name">창세기 개관</div>
+        <div class="b-sub">영상 + 자료</div>
+      </div>
+      <div class="b-card">
+        <span class="b-icon">📖</span>
+        <div class="b-name">시편 묵상</div>
+        <div class="b-sub">영상 + 자료</div>
+      </div>
+      <div class="b-card">
+        <span class="b-icon">📖</span>
+        <div class="b-name">마태복음 개관</div>
+        <div class="b-sub">영상 + 자료</div>
+      </div>
+      <div class="b-card">
+        <span class="b-icon">📖</span>
+        <div class="b-name">로마서 강해</div>
+        <div class="b-sub">영상 + 자료</div>
+      </div>
+      <div class="b-card">
+        <span class="b-icon">📖</span>
+        <div class="b-name">요한복음 개관</div>
+        <div class="b-sub">영상 + 자료</div>
+      </div>
+      <div class="b-card">
+        <span class="b-icon">📖</span>
+        <div class="b-name">요한계시록</div>
+        <div class="b-sub">영상 + 자료</div>
+      </div>
+      <div class="b-card">
+        <span class="b-icon">＋</span>
+        <div class="b-name">전체 보기</div>
+        <div class="b-sub">모든 성경 개관</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="rule"></div>
+
+<!-- NOTICE -->
+<div class="section" id="notice">
+  <div class="inner">
+    <div class="s-head reveal">
+      <div class="s-label">Church News</div>
+      <h2 class="s-title">교회 소식 & 공지</h2>
+    </div>
+
+    <div class="notice-list reveal">
+      <div class="n-item">
+        <span class="n-badge nb-new">NEW</span>
+        <div class="n-title">부활절 특별 온라인 예배 안내</div>
+        <div class="n-date">2025.04.01</div>
+      </div>
+      <div class="n-item">
+        <span class="n-badge nb-event">행사</span>
+        <div class="n-title">온라인 새가족 환영회 — 4월 13일 (일) 오후 2시</div>
+        <div class="n-date">2025.03.28</div>
+      </div>
+      <div class="n-item">
+        <span class="n-badge nb-notice">공지</span>
+        <div class="n-title">구역 모임 & 청년 모임 참여자 모집 안내</div>
+        <div class="n-date">2025.03.25</div>
+      </div>
+      <div class="n-item">
+        <span class="n-badge nb-event">행사</span>
+        <div class="n-title">5월 온라인 수련회 사전 신청 오픈</div>
+        <div class="n-date">2025.03.20</div>
+      </div>
+      <div class="n-item">
+        <span class="n-badge nb-notice">공지</span>
+        <div class="n-title">카카오톡 채널 개설 안내 — 매일 말씀 받아보세요</div>
+        <div class="n-date">2025.03.15</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="rule"></div>
+
+<!-- OFFERING -->
+<div class="section section-dark" id="offering">
+  <div class="inner">
+    <div class="s-head reveal">
+      <div class="s-label">Offering</div>
+      <h2 class="s-title">온라인 헌금 안내</h2>
+    </div>
+
+    <div class="offering-layout reveal">
+      <div class="offering-main">
+        <div>
+          <h3>On 양화교회<br>사역을 함께<br>지원해 주세요</h3>
+          <p>헌금은 온라인 사역과 가나안 성도를 위한 프로그램 운영에 사용됩니다. 영수증은 이메일로 발송해 드립니다.</p>
+        </div>
+        <div class="offering-accounts">
+          <div class="acc-item">
+            <div class="acc-icon">🏦</div>
+            <div>
+              <div class="acc-name">국민은행 000-0000-0000-00</div>
+              <div class="acc-sub">예금주: 양화교회</div>
+            </div>
+          </div>
+          <div class="acc-item">
+            <div class="acc-icon">💛</div>
+            <div>
+              <div class="acc-name">카카오페이</div>
+              <div class="acc-sub">@양화교회 검색 후 송금</div>
+            </div>
+          </div>
+          <div class="acc-item">
+            <div class="acc-icon">💙</div>
+            <div>
+              <div class="acc-name">토스</div>
+              <div class="acc-sub">@양화교회 검색 후 송금</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="offering-info-cards">
+        <div class="of-info-card">
+          <h4>헌금 종류</h4>
+          <p>십일조, 감사헌금, 주일헌금, 선교헌금 모두 가능합니다. 이체 시 이름과 헌금 종류를 메모에 남겨주세요.</p>
+        </div>
+        <div class="of-info-card">
+          <h4>영수증 발급</h4>
+          <p>연말정산용 기부금 영수증 발급 가능합니다. 이메일로 신청해 주시면 발송해 드립니다.</p>
+        </div>
+        <div class="of-info-card">
+          <h4>사역 보고</h4>
+          <p>헌금이 어떻게 쓰이는지 매월 뉴스레터를 통해 투명하게 보고드립니다.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="f-logo">
+          <span class="f-on">On</span>&nbsp;양화교회
+        </div>
+        <div class="f-about">교회 밖에 있는 모든 분들을 향해 열린 교회입니다. 어디에 있든, 어떤 상황에 있든 환영합니다.</div>
+        <div class="f-socials">
+          <a class="f-social" href="#" title="유튜브">▶</a>
+          <a class="f-social" href="#" title="인스타그램">📷</a>
+          <a class="f-social" href="#" title="카카오채널">💬</a>
+        </div>
+      </div>
+      <div class="f-col">
+        <h4>예배 & 사역</h4>
+        <a href="#worship">예배 안내</a>
+        <a href="#community">구역·청년 모임</a>
+        <a href="#prayer">기도 제목</a>
+        <a href="#offering">온라인 헌금</a>
+      </div>
+      <div class="f-col">
+        <h4>말씀 & 성도</h4>
+        <a href="#sermons">설교 영상</a>
+        <a href="#bible">성경통독</a>
+        <a href="#canaan">가나안 성도 등록</a>
+        <a href="#notice">교회 소식</a>
+      </div>
+      <div class="f-col">
+        <h4>연락처</h4>
+        <a href="#">이메일 문의</a>
+        <a href="#">카카오톡 채널</a>
+        <a href="#">유튜브 채널</a>
+        <a href="#">인스타그램</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="f-copy">© 2025 On 양화교회 · All rights reserved</div>
+      <div class="f-verse">"두 세 사람이 내 이름으로 모인 곳에는 나도 그들 중에 있느니라" — 마 18:20</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Header scroll
+  const header = document.getElementById('header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // Mobile nav
+  document.getElementById('hamburger').addEventListener('click', () => {
+    document.getElementById('mobNav').classList.add('open');
+  });
+  document.getElementById('mobClose').addEventListener('click', closeMob);
+  function closeMob() {
+    document.getElementById('mobNav').classList.remove('open');
+  }
+
+  // Reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 60);
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  reveals.forEach(r => obs.observe(r));
+</script>
+</body>
+</html>
