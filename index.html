@@ -144,21 +144,20 @@ header.scrolled {
   position: relative;
 }
 
-.hero {
-  min-height: 100vh;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 120px 48px 80px;
-  gap: 80px;
-  position: relative;
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  height: 100%;
   background: 
-    linear-gradient(rgba(247, 245, 242, 0.4), rgba(247, 245, 242, 0.8)),
+    linear-gradient(rgba(247, 245, 242, 0.4), rgba(247, 245, 242, 0.95)),
     url('hero-bg.jpg') center/cover no-repeat;
+  pointer-events: none;
+  z-index: -1;
 }
-
 .hero-left { animation: fadeLeft 1s ease both; }
 
 @keyframes fadeLeft {
@@ -1752,6 +1751,7 @@ footer {
 </body>
 
 </html>
+
 
 
 
