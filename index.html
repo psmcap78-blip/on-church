@@ -146,11 +146,11 @@ header.scrolled {
 
 .hero::after {
   content: '';
-  position: fixed;
+  position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background:
-    radial-gradient(ellipse at 70% 20%, rgba(160,120,48,0.06) 0%, transparent 60%),
-    radial-gradient(ellipse at 10% 80%, rgba(160,120,48,0.04) 0%, transparent 50%);
+  background: 
+    linear-gradient(rgba(247, 245, 242, 0.4), rgba(247, 245, 242, 0.95)),
+    url('hero-bg.jpg') center/cover no-repeat;
   pointer-events: none;
   z-index: -1;
 }
