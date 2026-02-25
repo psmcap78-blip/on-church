@@ -1355,14 +1355,20 @@ footer {
         <div style="background: #F7F5F2; padding: 20px; border-radius: 16px; margin-bottom: 20px; text-align: center; border: 1px solid rgba(0,0,0,0.05);">
           <div id="now-playing-title" style="font-size: 0.95rem; font-weight: 600; color: #A07830; margin-bottom: 12px;">1. 너는 내 것이라</div>
           
-          <audio id="main-audio" controls controlsList="nodownload" style="width: 100%; height: 40px; outline: none;">
-            <source src="song1.mp3" type="audio/mpeg">
-          </audio>
-          
-          <div style="margin-top: 15px;">
-            <button id="like-btn" onclick="addLike()" style="background: #fff; border: 1px solid #ff4b4b; color: #ff4b4b; border-radius: 50px; padding: 6px 18px; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.2s;">
+<div style="margin-top: 15px; display: flex; justify-content: center; gap: 8px; flex-wrap: wrap;">
+            
+            <button id="like-btn" onclick="addLike()" style="background: #fff; border: 1px solid #ff4b4b; color: #ff4b4b; border-radius: 50px; padding: 6px 16px; font-size: 0.8rem; font-weight: 600; cursor: pointer; transition: all 0.2s;">
               ❤️ 은혜받았어요 <span id="like-count">0</span>
             </button>
+
+            <button id="repeat-btn" onclick="toggleRepeat()" style="background: #fff; border: 1px solid rgba(0,0,0,0.15); color: #666; border-radius: 50px; padding: 6px 16px; font-size: 0.8rem; font-weight: 600; cursor: pointer; transition: all 0.2s;">
+              🔂 한곡 반복
+            </button>
+
+            <button id="playall-btn" onclick="togglePlayAll()" style="background: #fff; border: 1px solid rgba(0,0,0,0.15); color: #666; border-radius: 50px; padding: 6px 16px; font-size: 0.8rem; font-weight: 600; cursor: pointer; transition: all 0.2s;">
+              🔁 전체 재생
+            </button>
+
           </div>
         </div>
 
@@ -1818,31 +1824,30 @@ footer {
   reveals.forEach(r => obs.observe(r));
 </script>
 <script>
-  // 새로 추가: 좋아요 숫자를 기억할 임시 공간
+<script>
   let currentLikes = 0;
+  let currentFile = 'song1.mp3'; // 현재 재생중인 파일 기억하기
+  let isRepeat = false;
+  let isPlayAll = false;
 
   function changeSong(fileName, songTitle) {
     const player = document.getElementById('main-audio');
     const titleText = document.getElementById('now-playing-title');
     
-    // 플레이어의 곡 파일과 위쪽 제목을 바꿈
+    currentFile = fileName; // 누른 곡 기억하기
     player.src = fileName;
     titleText.innerText = songTitle;
     
-    // 곡이 바뀌면 좋아요 숫자도 다시 0으로 초기화!
+    // 다른 곡 누르면 하트 숫자 초기화
     currentLikes = 0;
     document.getElementById('like-count').innerText = currentLikes;
     
-    // 바뀌자마자 곧바로 재생 시작!
     player.play();
   }
 
-  // 새로 추가: 좋아요 버튼을 누르면 숫자가 올라가는 마법
   function addLike() {
     currentLikes++;
     document.getElementById('like-count').innerText = currentLikes;
-    
-    // 누를 때 버튼이 살짝 커졌다가 돌아오는 귀여운 쿵쾅 효과
     const btn = document.getElementById('like-btn');
     btn.style.transform = 'scale(1.1)';
     btn.style.background = '#ffebed';
@@ -1851,10 +1856,81 @@ footer {
       btn.style.background = '#fff';
     }, 200);
   }
+
+  // 한곡 반복 켜기/끄기
+  function toggleRepeat() {
+    isRepeat = !isRepeat;
+    isPlayAll = false; // 한곡 반복 켜면 전체 재생은 끄기
+    updateButtonStyles();
+  }
+
+  // 전체 재생 켜기/끄기
+  function togglePlayAll() {
+    isPlayAll = !isPlayAll;
+    isRepeat = false; // 전체 재생 켜면 한곡 반복은 끄기
+    updateButtonStyles();
+  }
+
+  // 버튼 누르면 금색으로 불 들어오게 만들기
+  function updateButtonStyles() {
+    const repeatBtn = document.getElementById('repeat-btn');
+    const playAllBtn = document.getElementById('playall-btn');
+    
+    if(isRepeat) {
+      repeatBtn.style.background = '#A07830';
+      repeatBtn.style.color = '#fff';
+      repeatBtn.style.borderColor = '#A07830';
+    } else {
+      repeatBtn.style.background = '#fff';
+      repeatBtn.style.color = '#666';
+      repeatBtn.style.borderColor = 'rgba(0,0,0,0.15)';
+    }
+
+    if(isPlayAll) {
+      playAllBtn.style.background = '#A07830';
+      playAllBtn.style.color = '#fff';
+      playAllBtn.style.borderColor = '#A07830';
+    } else {
+      playAllBtn.style.background = '#fff';
+      playAllBtn.style.color = '#666';
+      playAllBtn.style.borderColor = 'rgba(0,0,0,0.15)';
+    }
+  }
+
+  // ★ 핵심 마법: 노래가 끝났을 때 스스로 움직이게 하기 ★
+  window.addEventListener('DOMContentLoaded', () => {
+    const player = document.getElementById('main-audio');
+    
+    player.addEventListener('ended', function() {
+      if (isRepeat) {
+        // 한곡 반복: 0초로 돌려서 다시 재생
+        this.currentTime = 0;
+        this.play();
+      } else if (isPlayAll) {
+        // 전체 재생: 현재 파일 숫자에서 +1 한 노래 찾기
+        let currentNum = parseInt(currentFile.replace(/[^0-9]/g, ''));
+        let nextNum = currentNum + 1;
+        
+        if (nextNum > 8) nextNum = 1; // 8번 곡 끝나면 다시 1번으로!
+        
+        let nextFileName = 'song' + nextNum + '.mp3';
+        
+        // 다음 곡 버튼을 찾아서 알아서 클릭하게 만듦
+        let buttons = document.querySelectorAll('button[onclick^="changeSong"]');
+        for (let btn of buttons) {
+          if (btn.getAttribute('onclick').includes(nextFileName)) {
+            btn.click(); 
+            break;
+          }
+        }
+      }
+    });
+  });
 </script>
 </body>
 
 </html>
+
 
 
 
