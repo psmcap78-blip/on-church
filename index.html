@@ -1798,13 +1798,11 @@ footer {
   }, { threshold: 0.08 });
   reveals.forEach(r => obs.observe(r));
 </script>
-<script>
-  <script type="module">
-  // 1. 파이어베이스 도구 가져오기
+
+<script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
   import { getFirestore, doc, setDoc, updateDoc, increment, collection, addDoc, onSnapshot, query, orderBy } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
 
-  // 2. 성민이의 비밀 열쇠 꽂기
   const firebaseConfig = {
     apiKey: "AIzaSyC_ltqTZG8PHVv5ueqzEP8y0I-gGuBhDTo",
     authDomain: "on-church-457f7.firebaseapp.com",
@@ -1821,7 +1819,7 @@ footer {
   let currentFile = 'song1.mp3';
   let isRepeat = false;
   let isPlayAll = false;
-  let unsubLike = null; // 곡마다 달라지는 좋아요 감지기
+  let unsubLike = null;
 
   function listenToLikes(fileName) {
     if(unsubLike) unsubLike();
@@ -1840,11 +1838,9 @@ footer {
   window.changeSong = function(fileName, songTitle) {
     const player = document.getElementById('main-audio');
     const titleText = document.getElementById('now-playing-title');
-    
     currentFile = fileName; 
     player.src = fileName;
     titleText.innerText = songTitle;
-    
     listenToLikes(fileName);
     player.play();
   };
@@ -1878,11 +1874,9 @@ footer {
   function updateButtonStyles() {
     const rBtn = document.getElementById('repeat-btn');
     const pBtn = document.getElementById('playall-btn');
-    
     rBtn.style.background = isRepeat ? '#A07830' : '#fff';
     rBtn.style.color = isRepeat ? '#fff' : '#666';
     rBtn.style.borderColor = isRepeat ? '#A07830' : 'rgba(0,0,0,0.15)';
-    
     pBtn.style.background = isPlayAll ? '#A07830' : '#fff';
     pBtn.style.color = isPlayAll ? '#fff' : '#666';
     pBtn.style.borderColor = isPlayAll ? '#A07830' : 'rgba(0,0,0,0.15)';
@@ -1971,7 +1965,6 @@ footer {
   }
 </script>
 </body>
-
 </html>
 
 
