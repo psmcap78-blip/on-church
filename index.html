@@ -1357,6 +1357,19 @@ footer {
           <audio id="main-audio" controls controlsList="nodownload" style="width: 100%; height: 40px; outline: none;">
           <source src="song1.mp3" type="audio/mpeg">
           </audio>
+          <div style="background: #F7F5F2; padding: 20px; border-radius: 16px; margin-bottom: 20px; text-align: center; border: 1px solid rgba(0,0,0,0.05);">
+          <div id="now-playing-title" style="font-size: 0.95rem; font-weight: 600; color: #A07830; margin-bottom: 12px;">1. 첫 번째 찬양 제목</div>
+          
+          <audio id="main-audio" controls controlsList="nodownload" style="width: 100%; height: 40px; outline: none;">
+            <source src="song1.mp3" type="audio/mpeg">
+          </audio>
+          
+          <div style="margin-top: 15px;">
+            <button id="like-btn" onclick="addLike()" style="background: #fff; border: 1px solid #ff4b4b; color: #ff4b4b; border-radius: 50px; padding: 6px 18px; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.2s;">
+              ❤️ 은혜받았어요 <span id="like-count">0</span>
+            </button>
+          </div>
+          </div>
         </div>
 
         <div style="display: flex; flex-direction: column; gap: 8px;">
@@ -1822,6 +1835,7 @@ footer {
 </body>
 
 </html>
+
 
 
 
