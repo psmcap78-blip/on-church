@@ -1824,9 +1824,35 @@ footer {
   reveals.forEach(r => obs.observe(r));
 </script>
 <script>
-<script>
+  // 1. 헤더 배경 & 모바일 메뉴 마법 (원래 있던 기능)
+  const header = document.getElementById('header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  document.getElementById('hamburger').addEventListener('click', () => {
+    document.getElementById('mobNav').classList.add('open');
+  });
+  document.getElementById('mobClose').addEventListener('click', closeMob);
+  function closeMob() {
+    document.getElementById('mobNav').classList.remove('open');
+  }
+
+  // 2. 스크롤할 때 스르륵 나타나는 마법 (원래 있던 기능)
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 60);
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  reveals.forEach(r => obs.observe(r));
+
+  // 3. 찬양 재생기 & 좋아요 & 연속듣기 마법 (새로 추가된 기능!)
   let currentLikes = 0;
-  let currentFile = 'song1.mp3'; // 현재 재생중인 파일 기억하기
+  let currentFile = 'song1.mp3'; 
   let isRepeat = false;
   let isPlayAll = false;
 
@@ -1834,11 +1860,10 @@ footer {
     const player = document.getElementById('main-audio');
     const titleText = document.getElementById('now-playing-title');
     
-    currentFile = fileName; // 누른 곡 기억하기
+    currentFile = fileName; 
     player.src = fileName;
     titleText.innerText = songTitle;
     
-    // 다른 곡 누르면 하트 숫자 초기화
     currentLikes = 0;
     document.getElementById('like-count').innerText = currentLikes;
     
@@ -1857,21 +1882,18 @@ footer {
     }, 200);
   }
 
-  // 한곡 반복 켜기/끄기
   function toggleRepeat() {
     isRepeat = !isRepeat;
-    isPlayAll = false; // 한곡 반복 켜면 전체 재생은 끄기
+    if(isRepeat) isPlayAll = false; 
     updateButtonStyles();
   }
 
-  // 전체 재생 켜기/끄기
   function togglePlayAll() {
     isPlayAll = !isPlayAll;
-    isRepeat = false; // 전체 재생 켜면 한곡 반복은 끄기
+    if(isPlayAll) isRepeat = false; 
     updateButtonStyles();
   }
 
-  // 버튼 누르면 금색으로 불 들어오게 만들기
   function updateButtonStyles() {
     const repeatBtn = document.getElementById('repeat-btn');
     const playAllBtn = document.getElementById('playall-btn');
@@ -1897,39 +1919,37 @@ footer {
     }
   }
 
-  // ★ 핵심 마법: 노래가 끝났을 때 스스로 움직이게 하기 ★
   window.addEventListener('DOMContentLoaded', () => {
     const player = document.getElementById('main-audio');
-    
-    player.addEventListener('ended', function() {
-      if (isRepeat) {
-        // 한곡 반복: 0초로 돌려서 다시 재생
-        this.currentTime = 0;
-        this.play();
-      } else if (isPlayAll) {
-        // 전체 재생: 현재 파일 숫자에서 +1 한 노래 찾기
-        let currentNum = parseInt(currentFile.replace(/[^0-9]/g, ''));
-        let nextNum = currentNum + 1;
-        
-        if (nextNum > 8) nextNum = 1; // 8번 곡 끝나면 다시 1번으로!
-        
-        let nextFileName = 'song' + nextNum + '.mp3';
-        
-        // 다음 곡 버튼을 찾아서 알아서 클릭하게 만듦
-        let buttons = document.querySelectorAll('button[onclick^="changeSong"]');
-        for (let btn of buttons) {
-          if (btn.getAttribute('onclick').includes(nextFileName)) {
-            btn.click(); 
-            break;
+    if(player) {
+      player.addEventListener('ended', function() {
+        if (isRepeat) {
+          this.currentTime = 0;
+          this.play();
+        } else if (isPlayAll) {
+          let buttons = document.querySelectorAll('button[onclick^="changeSong"]');
+          let clickedNext = false;
+          for (let i = 0; i < buttons.length; i++) {
+            if (buttons[i].getAttribute('onclick').includes(currentFile)) {
+              let nextIndex = i + 1;
+              if (nextIndex >= buttons.length) nextIndex = 0; 
+              buttons[nextIndex].click();
+              clickedNext = true;
+              break;
+            }
           }
+          if(!clickedNext && buttons.length > 0) buttons[0].click();
         }
-      }
-    });
+      });
+    }
   });
 </script>
 </body>
+</html>
+</body>
 
 </html>
+
 
 
 
