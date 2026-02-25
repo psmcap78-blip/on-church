@@ -1832,9 +1832,45 @@ footer {
   }, { threshold: 0.08 });
   reveals.forEach(r => obs.observe(r));
 </script>
+<script>
+  // 새로 추가: 좋아요 숫자를 기억할 임시 공간
+  let currentLikes = 0;
+
+  function changeSong(fileName, songTitle) {
+    const player = document.getElementById('main-audio');
+    const titleText = document.getElementById('now-playing-title');
+    
+    // 플레이어의 곡 파일과 위쪽 제목을 바꿈
+    player.src = fileName;
+    titleText.innerText = songTitle;
+    
+    // 곡이 바뀌면 좋아요 숫자도 다시 0으로 초기화!
+    currentLikes = 0;
+    document.getElementById('like-count').innerText = currentLikes;
+    
+    // 바뀌자마자 곧바로 재생 시작!
+    player.play();
+  }
+
+  // 새로 추가: 좋아요 버튼을 누르면 숫자가 올라가는 마법
+  function addLike() {
+    currentLikes++;
+    document.getElementById('like-count').innerText = currentLikes;
+    
+    // 누를 때 버튼이 살짝 커졌다가 돌아오는 귀여운 쿵쾅 효과
+    const btn = document.getElementById('like-btn');
+    btn.style.transform = 'scale(1.1)';
+    btn.style.background = '#ffebed';
+    setTimeout(() => {
+      btn.style.transform = 'scale(1)';
+      btn.style.background = '#fff';
+    }, 200);
+  }
+</script>
 </body>
 
 </html>
+
 
 
 
