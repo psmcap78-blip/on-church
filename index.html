@@ -1342,7 +1342,8 @@ footer {
         </div>
       </div>
 
-      <div style="background: #FFFFFF; border: 1px solid var(--border); border-radius: 20px; padding: 32px; box-shadow: 0 4px 24px rgba(0,0,0,0.04);">
+   <div style="background: #FFFFFF; border: 1px solid var(--border); border-radius: 20px; padding: 32px; box-shadow: 0 4px 24px rgba(0,0,0,0.04);">
+        
         <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 24px;">
           <div style="width: 44px; height: 44px; background: rgba(160,120,48,0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">🎧</div>
           <div>
@@ -1352,18 +1353,26 @@ footer {
         </div>
 
         <div style="background: #F7F5F2; padding: 20px; border-radius: 16px; margin-bottom: 20px; text-align: center; border: 1px solid rgba(0,0,0,0.05);">
-          <div id="now-playing-title" style="font-size: 0.95rem; font-weight: 600; color: #A07830; margin-bottom: 12px;">1.           <div id="now-playing-title" style="font-size: 0.95rem; font-weight: 600; color: #A07830; margin-bottom: 12px;">1. 너는 내 것이라<div>
+          <div id="now-playing-title" style="font-size: 0.95rem; font-weight: 600; color: #A07830; margin-bottom: 12px;">1. 너는 내 것이라</div>
+          
           <audio id="main-audio" controls controlsList="nodownload" style="width: 100%; height: 40px; outline: none;">
             <source src="song1.mp3" type="audio/mpeg">
           </audio>
+          
           <div style="margin-top: 15px; display: flex; justify-content: center; gap: 8px; flex-wrap: wrap;">
-            <button id="like-btn" onclick="addLike()" style="background: #fff; border: 1px solid #ff4b4b; color: #ff4b4b; border-radius: 50px; padding: 6px 14px; font-size: 0.75rem; font-weight: 600; cursor: pointer;">❤️ 은혜받았어요 <span id="like-count">0</span></button>
-            <button id="repeat-btn" onclick="toggleRepeat()" style="background: #fff; border: 1px solid rgba(0,0,0,0.15); color: #666; border-radius: 50px; padding: 6px 14px; font-size: 0.75rem; font-weight: 600; cursor: pointer;">🔂 한곡 반복</button>
-            <button id="playall-btn" onclick="togglePlayAll()" style="background: #fff; border: 1px solid rgba(0,0,0,0.15); color: #666; border-radius: 50px; padding: 6px 14px; font-size: 0.75rem; font-weight: 600; cursor: pointer;">🔁 전체 재생</button>
+            <button id="like-btn" onclick="addLike()" style="background: #fff; border: 1px solid #ff4b4b; color: #ff4b4b; border-radius: 50px; padding: 6px 16px; font-size: 0.8rem; font-weight: 600; cursor: pointer; transition: all 0.2s;">
+              ❤️ 은혜받았어요 <span id="like-count">0</span>
+            </button>
+            <button id="repeat-btn" onclick="toggleRepeat()" style="background: #fff; border: 1px solid rgba(0,0,0,0.15); color: #666; border-radius: 50px; padding: 6px 16px; font-size: 0.8rem; font-weight: 600; cursor: pointer; transition: all 0.2s;">
+              🔂 한곡 반복
+            </button>
+            <button id="playall-btn" onclick="togglePlayAll()" style="background: #fff; border: 1px solid rgba(0,0,0,0.15); color: #666; border-radius: 50px; padding: 6px 16px; font-size: 0.8rem; font-weight: 600; cursor: pointer; transition: all 0.2s;">
+              🔁 전체 재생
+            </button>
           </div>
         </div>
 
-        <div id="playlist-container" style="display: flex; flex-direction: column; gap: 8px;">
+        <div style="display: flex; flex-direction: column; gap: 8px;">
           <button onclick="changeSong('song1.mp3', '1. 너는 내 것이라')" style="text-align: left; padding: 12px 16px; background: #fff; border: 1px solid rgba(0,0,0,0.08); border-radius: 10px; cursor: pointer; font-size: 0.85rem; color: #444; font-family: 'Noto Sans KR', sans-serif; transition: 0.2s;" onmouseover="this.style.borderColor='#A07830'; this.style.color='#A07830'" onmouseout="this.style.borderColor='rgba(0,0,0,0.08)'; this.style.color='#444'">🎵 1. 너는 내 것이라</button>
           <button onclick="changeSong('song2.mp3', '2. 나의 목자 되시니')" style="text-align: left; padding: 12px 16px; background: #fff; border: 1px solid rgba(0,0,0,0.08); border-radius: 10px; cursor: pointer; font-size: 0.85rem; color: #444; font-family: 'Noto Sans KR', sans-serif; transition: 0.2s;" onmouseover="this.style.borderColor='#A07830'; this.style.color='#A07830'" onmouseout="this.style.borderColor='rgba(0,0,0,0.08)'; this.style.color='#444'">🎵 2. 나의 목자 되시니</button>
           <button onclick="changeSong('song3.mp3', '3. 내게로 오라')" style="text-align: left; padding: 12px 16px; background: #fff; border: 1px solid rgba(0,0,0,0.08); border-radius: 10px; cursor: pointer; font-size: 0.85rem; color: #444; font-family: 'Noto Sans KR', sans-serif; transition: 0.2s;" onmouseover="this.style.borderColor='#A07830'; this.style.color='#A07830'" onmouseout="this.style.borderColor='rgba(0,0,0,0.08)'; this.style.color='#444'">🎵 3. 내게로 오라</button>
@@ -1373,10 +1382,13 @@ footer {
           <button onclick="changeSong('song7.mp3', '7. 하나님의 평강')" style="text-align: left; padding: 12px 16px; background: #fff; border: 1px solid rgba(0,0,0,0.08); border-radius: 10px; cursor: pointer; font-size: 0.85rem; color: #444; font-family: 'Noto Sans KR', sans-serif; transition: 0.2s;" onmouseover="this.style.borderColor='#A07830'; this.style.color='#A07830'" onmouseout="this.style.borderColor='rgba(0,0,0,0.08)'; this.style.color='#444'">🎵 7. 하나님의 평강</button>
           <button onclick="changeSong('song8.mp3', '8. 우리의 소망')" style="text-align: left; padding: 12px 16px; background: #fff; border: 1px solid rgba(0,0,0,0.08); border-radius: 10px; cursor: pointer; font-size: 0.85rem; color: #444; font-family: 'Noto Sans KR', sans-serif; transition: 0.2s;" onmouseover="this.style.borderColor='#A07830'; this.style.color='#A07830'" onmouseout="this.style.borderColor='rgba(0,0,0,0.08)'; this.style.color='#444'">🎵 8. 우리의 소망</button>
         </div>
+
       </div>
     </div>
   </div>
 </div>
+
+<div class="rule"></div>
 
 <div class="rule"></div>
 
@@ -1475,4 +1487,5 @@ footer {
 </script>
 </body>
 </html>
+
 
