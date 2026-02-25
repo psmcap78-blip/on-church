@@ -1541,55 +1541,30 @@ footer {
     </div>
 
     <div class="prayer-layout reveal">
-      <div class="prayer-form-wrap">
+<div class="prayer-form-wrap">
         <div class="form-row">
           <div class="form-group">
             <label>이름 (익명 가능)</label>
-            <input type="text" placeholder="홍길동 or 익명">
+            <input type="text" id="prayer-name" placeholder="홍길동 or 익명">
           </div>
           <div class="form-group">
             <label>공개 범위</label>
-            <select>
-              <option>목사님께만 (비공개)</option>
-              <option>전체 공개</option>
+            <select id="prayer-vis">
+              <option value="목사님께만 (비공개)">목사님께만 (비공개)</option>
+              <option value="전체 공개">전체 공개</option>
             </select>
           </div>
         </div>
         <div class="form-group">
           <label>기도 제목</label>
-          <textarea placeholder="기도 제목을 자유롭게 적어주세요. 무엇이든 괜찮습니다."></textarea>
+          <textarea id="prayer-content" placeholder="기도 제목을 자유롭게 적어주세요. 무엇이든 괜찮습니다."></textarea>
         </div>
-        <button class="btn-form">기도 제목 올리기</button>
+        <button id="submit-prayer-btn" class="btn-form">기도 제목 올리기</button>
       </div>
 
-      <div class="prayer-list">
-        <div class="prayer-item">
-          <div class="prayer-meta">
-            <span class="prayer-name">집사님 A</span>
-            <span class="prayer-tag-small">공개</span>
-          </div>
-          <div class="prayer-text">남편의 건강 회복을 위해 기도해 주세요. 최근 입원 중입니다.</div>
-        </div>
-        <div class="prayer-item">
-          <div class="prayer-meta">
-            <span class="prayer-name">익명</span>
-            <span class="prayer-tag-small">공개</span>
-          </div>
-          <div class="prayer-text">취업 준비 중입니다. 하나님의 인도하심을 구합니다.</div>
-        </div>
-        <div class="prayer-item">
-          <div class="prayer-meta">
-            <span class="prayer-name">형제 B</span>
-            <span class="prayer-tag-small">공개</span>
-          </div>
-          <div class="prayer-text">오랫동안 교회를 떠났다가 이곳을 찾았습니다. 신앙 회복을 위해 기도해 주세요.</div>
-        </div>
-        <div class="prayer-item">
-          <div class="prayer-meta">
-            <span class="prayer-name">자매 C</span>
-            <span class="prayer-tag-small">공개</span>
-          </div>
-          <div class="prayer-text">부모님의 구원을 위해 오랫동안 기도하고 있습니다. 함께해 주세요.</div>
+      <div class="prayer-list" id="prayer-list-container">
+        <div style="text-align:center; padding: 40px 20px; color:var(--muted); font-size:0.85rem;">
+          데이터베이스에서 기도 제목을 불러오는 중입니다... 🙏
         </div>
       </div>
     </div>
@@ -1824,12 +1799,45 @@ footer {
   reveals.forEach(r => obs.observe(r));
 </script>
 <script>
-  let currentLikes = 0;
-  let currentFile = 'song1.mp3'; // 현재 재생중인 파일 기억
+  <script type="module">
+  // 1. 파이어베이스 도구 가져오기
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
+  import { getFirestore, doc, setDoc, updateDoc, increment, collection, addDoc, onSnapshot, query, orderBy } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
+
+  // 2. 성민이의 비밀 열쇠 꽂기
+  const firebaseConfig = {
+    apiKey: "AIzaSyC_ltqTZG8PHVv5ueqzEP8y0I-gGuBhDTo",
+    authDomain: "on-church-457f7.firebaseapp.com",
+    projectId: "on-church-457f7",
+    storageBucket: "on-church-457f7.firebasestorage.app",
+    messagingSenderId: "408282074051",
+    appId: "1:408282074051:web:5814600542a600fd9acb76"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  // ─── [찬양 플레이어 & 좋아요 연동] ───
+  let currentFile = 'song1.mp3';
   let isRepeat = false;
   let isPlayAll = false;
+  let unsubLike = null; // 곡마다 달라지는 좋아요 감지기
 
-  function changeSong(fileName, songTitle) {
+  function listenToLikes(fileName) {
+    if(unsubLike) unsubLike();
+    const likeRef = doc(db, "likes", fileName);
+    unsubLike = onSnapshot(likeRef, (docSnap) => {
+      if(docSnap.exists()) {
+        document.getElementById('like-count').innerText = docSnap.data().count;
+      } else {
+        document.getElementById('like-count').innerText = 0;
+      }
+    });
+  }
+
+  listenToLikes(currentFile);
+
+  window.changeSong = function(fileName, songTitle) {
     const player = document.getElementById('main-audio');
     const titleText = document.getElementById('now-playing-title');
     
@@ -1837,34 +1845,35 @@ footer {
     player.src = fileName;
     titleText.innerText = songTitle;
     
-    currentLikes = 0;
-    document.getElementById('like-count').innerText = currentLikes;
+    listenToLikes(fileName);
     player.play();
-  }
+  };
 
-  function addLike() {
-    currentLikes++;
-    document.getElementById('like-count').innerText = currentLikes;
+  window.addLike = async function() {
     const btn = document.getElementById('like-btn');
     btn.style.transform = 'scale(1.1)';
     btn.style.background = '#ffebed';
-    setTimeout(() => {
-      btn.style.transform = 'scale(1)';
-      btn.style.background = '#fff';
-    }, 200);
-  }
+    setTimeout(() => { btn.style.transform = 'scale(1)'; btn.style.background = '#fff'; }, 200);
 
-  function toggleRepeat() {
+    const likeRef = doc(db, "likes", currentFile);
+    try {
+      await updateDoc(likeRef, { count: increment(1) });
+    } catch (error) {
+      await setDoc(likeRef, { count: 1 });
+    }
+  };
+
+  window.toggleRepeat = function() {
     isRepeat = !isRepeat;
-    if (isRepeat) isPlayAll = false; // 한곡반복 켜면 전체재생은 꺼짐
+    if (isRepeat) isPlayAll = false;
     updateButtonStyles();
-  }
+  };
 
-  function togglePlayAll() {
+  window.togglePlayAll = function() {
     isPlayAll = !isPlayAll;
-    if (isPlayAll) isRepeat = false; // 전체재생 켜면 한곡반복은 꺼짐
+    if (isPlayAll) isRepeat = false;
     updateButtonStyles();
-  }
+  };
 
   function updateButtonStyles() {
     const rBtn = document.getElementById('repeat-btn');
@@ -1879,21 +1888,18 @@ footer {
     pBtn.style.borderColor = isPlayAll ? '#A07830' : 'rgba(0,0,0,0.15)';
   }
 
-  // ★ 핵심 마법: 노래가 끝났을 때 스스로 움직이게 하기 ★
   window.addEventListener('DOMContentLoaded', () => {
     const player = document.getElementById('main-audio');
     if (player) {
       player.addEventListener('ended', function() {
         if (isRepeat) {
-          // 한곡 반복: 0초로 돌려서 다시 재생
           this.currentTime = 0;
           this.play();
         } else if (isPlayAll) {
-          // 전체 재생: 플레이리스트 버튼들을 찾아서 다음 곡 스스로 클릭
           let buttons = document.querySelectorAll('button[onclick^="changeSong"]');
           for (let i = 0; i < buttons.length; i++) {
             if (buttons[i].getAttribute('onclick').includes(currentFile)) {
-              let nextIndex = (i + 1) % buttons.length; // 마지막 곡이면 다시 1번 곡으로
+              let nextIndex = (i + 1) % buttons.length;
               buttons[nextIndex].click();
               break;
             }
@@ -1902,8 +1908,70 @@ footer {
       });
     }
   });
+
+  // ─── [기도 제목 파이어베이스 연동] ───
+  const prayerBtn = document.getElementById('submit-prayer-btn');
+  if(prayerBtn) {
+    prayerBtn.addEventListener('click', async () => {
+      const nameInput = document.getElementById('prayer-name').value || '익명';
+      const visInput = document.getElementById('prayer-vis').value;
+      const contentInput = document.getElementById('prayer-content').value;
+
+      if(!contentInput.trim()) { alert('기도 제목을 입력해주세요!'); return; }
+
+      prayerBtn.innerText = '올리는 중...'; 
+      prayerBtn.disabled = true;
+
+      try {
+        await addDoc(collection(db, "prayers"), {
+          name: nameInput,
+          visibility: visInput,
+          content: contentInput,
+          timestamp: new Date()
+        });
+        alert('기도 제목이 등록되었습니다. 성도님들과 함께 기도하겠습니다!');
+        document.getElementById('prayer-content').value = ''; 
+        document.getElementById('prayer-name').value = '';
+      } catch (e) {
+        alert('앗! 등록 중 오류가 발생했습니다. 다시 시도해 주세요.');
+        console.error(e);
+      } finally {
+        prayerBtn.innerText = '기도 제목 올리기'; 
+        prayerBtn.disabled = false;
+      }
+    });
+  }
+
+  const prayerListDiv = document.getElementById('prayer-list-container');
+  if(prayerListDiv) {
+    const q = query(collection(db, "prayers"), orderBy("timestamp", "desc"));
+    onSnapshot(q, (snapshot) => {
+      prayerListDiv.innerHTML = ''; 
+      let count = 0;
+      snapshot.forEach((docSnap) => {
+        const data = docSnap.data();
+        if (data.visibility === "전체 공개") {
+          count++;
+          const item = document.createElement('div');
+          item.className = 'prayer-item';
+          item.innerHTML = `
+            <div class="prayer-meta">
+              <span class="prayer-name">${data.name}</span>
+              <span class="prayer-tag-small">공개</span>
+            </div>
+            <div class="prayer-text">${data.content}</div>
+          `;
+          prayerListDiv.appendChild(item);
+        }
+      });
+      if(count === 0) {
+        prayerListDiv.innerHTML = '<div style="text-align:center; padding: 20px; color:var(--muted); font-size:0.85rem;">아직 등록된 공개 기도 제목이 없습니다. 첫 번째로 기도 제목을 나누어주세요! 🙏</div>';
+      }
+    });
+  }
 </script>
 </body>
 
 </html>
+
 
