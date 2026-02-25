@@ -1342,7 +1342,7 @@ footer {
         </div>
       </div>
 
-      <div style="background: #FFFFFF; border: 1px solid var(--border); border-radius: 20px; padding: 32px; box-shadow: 0 4px 24px rgba(0,0,0,0.04);">
+   <div style="background: #FFFFFF; border: 1px solid var(--border); border-radius: 20px; padding: 32px; box-shadow: 0 4px 24px rgba(0,0,0,0.04);">
         
         <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 24px;">
           <div style="width: 44px; height: 44px; background: rgba(160,120,48,0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">🎧</div>
@@ -1353,11 +1353,6 @@ footer {
         </div>
 
         <div style="background: #F7F5F2; padding: 20px; border-radius: 16px; margin-bottom: 20px; text-align: center; border: 1px solid rgba(0,0,0,0.05);">
-          <div id="now-playing-title" style="font-size: 0.95rem; font-weight: 600; color: #A07830; margin-bottom: 12px;">1.너는 내 것이라</div>
-          <audio id="main-audio" controls controlsList="nodownload" style="width: 100%; height: 40px; outline: none;">
-          <source src="song1.mp3" type="audio/mpeg">
-          </audio>
-          <div style="background: #F7F5F2; padding: 20px; border-radius: 16px; margin-bottom: 20px; text-align: center; border: 1px solid rgba(0,0,0,0.05);">
           <div id="now-playing-title" style="font-size: 0.95rem; font-weight: 600; color: #A07830; margin-bottom: 12px;">1. 첫 번째 찬양 제목</div>
           
           <audio id="main-audio" controls controlsList="nodownload" style="width: 100%; height: 40px; outline: none;">
@@ -1369,34 +1364,20 @@ footer {
               ❤️ 은혜받았어요 <span id="like-count">0</span>
             </button>
           </div>
-          </div>
         </div>
 
         <div style="display: flex; flex-direction: column; gap: 8px;">
-          <button onclick="changeSong('song1.mp3', '1. 너는 내 것이라')" style="text-align: left; padding: 12px 16px; background: #fff; border: 1px solid rgba(0,0,0,0.08); border-radius: 10px; cursor: pointer; font-size: 0.85rem; color: #444; font-family: 'Noto Sans KR', sans-serif; transition: 0.2s;" onmouseover="this.style.borderColor='#A07830'; this.style.color='#A07830'" onmouseout="this.style.borderColor='rgba(0,0,0,0.08)'; this.style.color='#444'">🎵 1. 너는 내 것이라</button>
-          <button onclick="changeSong('song2.mp3', '2. 나의 목자 되시니')" style="text-align: left; padding: 12px 16px; background: #fff; border: 1px solid rgba(0,0,0,0.08); border-radius: 10px; cursor: pointer; font-size: 0.85rem; color: #444; font-family: 'Noto Sans KR', sans-serif; transition: 0.2s;" onmouseover="this.style.borderColor='#A07830'; this.style.color='#A07830'" onmouseout="this.style.borderColor='rgba(0,0,0,0.08)'; this.style.color='#444'">🎵 2. 나의 목자 되시니</button>
-          <button onclick="changeSong('song3.mp3', '3. 내게로 오라')" style="text-align: left; padding: 12px 16px; background: #fff; border: 1px solid rgba(0,0,0,0.08); border-radius: 10px; cursor: pointer; font-size: 0.85rem; color: #444; font-family: 'Noto Sans KR', sans-serif; transition: 0.2s;" onmouseover="this.style.borderColor='#A07830'; this.style.color='#A07830'" onmouseout="this.style.borderColor='rgba(0,0,0,0.08)'; this.style.color='#444'">🎵 3. 내게로 오라</button>
-          <button onclick="changeSong('song4.mp3', '4. Shine on me')" style="text-align: left; padding: 12px 16px; background: #fff; border: 1px solid rgba(0,0,0,0.08); border-radius: 10px; cursor: pointer; font-size: 0.85rem; color: #444; font-family: 'Noto Sans KR', sans-serif; transition: 0.2s;" onmouseover="this.style.borderColor='#A07830'; this.style.color='#A07830'" onmouseout="this.style.borderColor='rgba(0,0,0,0.08)'; this.style.color='#444'">🎵 4. Shine on me</button>
-          <button onclick="changeSong('song5.mp3', '5. 주와 함께 Run&Fly')" style="text-align: left; padding: 12px 16px; background: #fff; border: 1px solid rgba(0,0,0,0.08); border-radius: 10px; cursor: pointer; font-size: 0.85rem; color: #444; font-family: 'Noto Sans KR', sans-serif; transition: 0.2s;" onmouseover="this.style.borderColor='#A07830'; this.style.color='#A07830'" onmouseout="this.style.borderColor='rgba(0,0,0,0.08)'; this.style.color='#444'">🎵 5. 주와 함께 Run&Fly</button>
-          <button onclick="changeSong('song6.mp3', '6. 주와 함께 걷는 새 길')" style="text-align: left; padding: 12px 16px; background: #fff; border: 1px solid rgba(0,0,0,0.08); border-radius: 10px; cursor: pointer; font-size: 0.85rem; color: #444; font-family: 'Noto Sans KR', sans-serif; transition: 0.2s;" onmouseover="this.style.borderColor='#A07830'; this.style.color='#A07830'" onmouseout="this.style.borderColor='rgba(0,0,0,0.08)'; this.style.color='#444'">🎵 6. 주와 함께 걷는 새 길</button>
-          <button onclick="changeSong('song7.mp3', '7. 하나님의 평강')" style="text-align: left; padding: 12px 16px; background: #fff; border: 1px solid rgba(0,0,0,0.08); border-radius: 10px; cursor: pointer; font-size: 0.85rem; color: #444; font-family: 'Noto Sans KR', sans-serif; transition: 0.2s;" onmouseover="this.style.borderColor='#A07830'; this.style.color='#A07830'" onmouseout="this.style.borderColor='rgba(0,0,0,0.08)'; this.style.color='#444'">🎵 7. 하나님의 평강</button>
-          <button onclick="changeSong('song8.mp3', '8. 우리의 소망')" style="text-align: left; padding: 12px 16px; background: #fff; border: 1px solid rgba(0,0,0,0.08); border-radius: 10px; cursor: pointer; font-size: 0.85rem; color: #444; font-family: 'Noto Sans KR', sans-serif; transition: 0.2s;" onmouseover="this.style.borderColor='#A07830'; this.style.color='#A07830'" onmouseout="this.style.borderColor='rgba(0,0,0,0.08)'; this.style.color='#444'">🎵 8. 우리의 소망</button>
+          <button onclick="changeSong('song1.mp3', '1. 첫 번째 찬양 제목')" style="text-align: left; padding: 12px 16px; background: #fff; border: 1px solid rgba(0,0,0,0.08); border-radius: 10px; cursor: pointer; font-size: 0.85rem; color: #444; font-family: 'Noto Sans KR', sans-serif; transition: 0.2s;" onmouseover="this.style.borderColor='#A07830'; this.style.color='#A07830'" onmouseout="this.style.borderColor='rgba(0,0,0,0.08)'; this.style.color='#444'">🎵 1. 첫 번째 찬양 제목</button>
+          <button onclick="changeSong('song2.mp3', '2. 두 번째 찬양 제목')" style="text-align: left; padding: 12px 16px; background: #fff; border: 1px solid rgba(0,0,0,0.08); border-radius: 10px; cursor: pointer; font-size: 0.85rem; color: #444; font-family: 'Noto Sans KR', sans-serif; transition: 0.2s;" onmouseover="this.style.borderColor='#A07830'; this.style.color='#A07830'" onmouseout="this.style.borderColor='rgba(0,0,0,0.08)'; this.style.color='#444'">🎵 2. 두 번째 찬양 제목</button>
+          <button onclick="changeSong('song3.mp3', '3. 세 번째 찬양 제목')" style="text-align: left; padding: 12px 16px; background: #fff; border: 1px solid rgba(0,0,0,0.08); border-radius: 10px; cursor: pointer; font-size: 0.85rem; color: #444; font-family: 'Noto Sans KR', sans-serif; transition: 0.2s;" onmouseover="this.style.borderColor='#A07830'; this.style.color='#A07830'" onmouseout="this.style.borderColor='rgba(0,0,0,0.08)'; this.style.color='#444'">🎵 3. 세 번째 찬양 제목</button>
+          <button onclick="changeSong('song4.mp3', '4. 네 번째 찬양 제목')" style="text-align: left; padding: 12px 16px; background: #fff; border: 1px solid rgba(0,0,0,0.08); border-radius: 10px; cursor: pointer; font-size: 0.85rem; color: #444; font-family: 'Noto Sans KR', sans-serif; transition: 0.2s;" onmouseover="this.style.borderColor='#A07830'; this.style.color='#A07830'" onmouseout="this.style.borderColor='rgba(0,0,0,0.08)'; this.style.color='#444'">🎵 4. 네 번째 찬양 제목</button>
+          <button onclick="changeSong('song5.mp3', '5. 다섯 번째 찬양 제목')" style="text-align: left; padding: 12px 16px; background: #fff; border: 1px solid rgba(0,0,0,0.08); border-radius: 10px; cursor: pointer; font-size: 0.85rem; color: #444; font-family: 'Noto Sans KR', sans-serif; transition: 0.2s;" onmouseover="this.style.borderColor='#A07830'; this.style.color='#A07830'" onmouseout="this.style.borderColor='rgba(0,0,0,0.08)'; this.style.color='#444'">🎵 5. 다섯 번째 찬양 제목</button>
+          <button onclick="changeSong('song6.mp3', '6. 여섯 번째 찬양 제목')" style="text-align: left; padding: 12px 16px; background: #fff; border: 1px solid rgba(0,0,0,0.08); border-radius: 10px; cursor: pointer; font-size: 0.85rem; color: #444; font-family: 'Noto Sans KR', sans-serif; transition: 0.2s;" onmouseover="this.style.borderColor='#A07830'; this.style.color='#A07830'" onmouseout="this.style.borderColor='rgba(0,0,0,0.08)'; this.style.color='#444'">🎵 6. 여섯 번째 찬양 제목</button>
+          <button onclick="changeSong('song7.mp3', '7. 일곱 번째 찬양 제목')" style="text-align: left; padding: 12px 16px; background: #fff; border: 1px solid rgba(0,0,0,0.08); border-radius: 10px; cursor: pointer; font-size: 0.85rem; color: #444; font-family: 'Noto Sans KR', sans-serif; transition: 0.2s;" onmouseover="this.style.borderColor='#A07830'; this.style.color='#A07830'" onmouseout="this.style.borderColor='rgba(0,0,0,0.08)'; this.style.color='#444'">🎵 7. 일곱 번째 찬양 제목</button>
+          <button onclick="changeSong('song8.mp3', '8. 여덟 번째 찬양 제목')" style="text-align: left; padding: 12px 16px; background: #fff; border: 1px solid rgba(0,0,0,0.08); border-radius: 10px; cursor: pointer; font-size: 0.85rem; color: #444; font-family: 'Noto Sans KR', sans-serif; transition: 0.2s;" onmouseover="this.style.borderColor='#A07830'; this.style.color='#A07830'" onmouseout="this.style.borderColor='rgba(0,0,0,0.08)'; this.style.color='#444'">🎵 8. 여덟 번째 찬양 제목</button>
         </div>
 
       </div>
-    </div>
-  </div>
-</div>
-<script>
-  function changeSong(fileName, songTitle) {
-    const player = document.getElementById('main-audio');
-    const titleText = document.getElementById('now-playing-title');
-    
-    player.src = fileName;
-    titleText.innerText = songTitle;
-    player.play();
-  }
-</script>
 <div class="rule"></div>
 <div class="rule"></div>
 
@@ -1870,6 +1851,7 @@ footer {
 </body>
 
 </html>
+
 
 
 
