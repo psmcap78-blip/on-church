@@ -1374,7 +1374,16 @@ footer {
     </div>
   </div>
 </div>
-
+<script>
+  function changeSong(fileName, songTitle) {
+    const player = document.getElementById('main-audio');
+    const titleText = document.getElementById('now-playing-title');
+    
+    player.src = fileName;
+    titleText.innerText = songTitle;
+    player.play();
+  }
+</script>
 <div class="rule"></div>
 <div class="rule"></div>
 
@@ -1813,6 +1822,7 @@ footer {
 </body>
 
 </html>
+
 
 
 
