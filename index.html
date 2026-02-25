@@ -1342,9 +1342,8 @@ footer {
         </div>
       </div>
 
-<div style="background: #FFFFFF; border: 1px solid var(--border); border-radius: 20px; padding: 32px; box-shadow: 0 4px 24px rgba(0,0,0,0.04);">
-        
-          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 24px;">
+      <div style="background: #FFFFFF; border: 1px solid var(--border); border-radius: 20px; padding: 32px; box-shadow: 0 4px 24px rgba(0,0,0,0.04);">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 24px;">
           <div style="width: 44px; height: 44px; background: rgba(160,120,48,0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">🎧</div>
           <div>
             <h3 style="font-size: 1.05rem; font-weight: 700; color: #1A1208; margin-bottom: 4px;">On 양화교회 창작 찬양</h3>
@@ -1354,44 +1353,33 @@ footer {
 
         <div style="background: #F7F5F2; padding: 20px; border-radius: 16px; margin-bottom: 20px; text-align: center; border: 1px solid rgba(0,0,0,0.05);">
           <div id="now-playing-title" style="font-size: 0.95rem; font-weight: 600; color: #A07830; margin-bottom: 12px;">1. 첫 번째 찬양 제목</div>
-          
           <audio id="main-audio" controls controlsList="nodownload" style="width: 100%; height: 40px; outline: none;">
             <source src="song1.mp3" type="audio/mpeg">
           </audio>
-          
           <div style="margin-top: 15px; display: flex; justify-content: center; gap: 8px; flex-wrap: wrap;">
-            <button id="like-btn" onclick="addLike()" style="background: #fff; border: 1px solid #ff4b4b; color: #ff4b4b; border-radius: 50px; padding: 6px 16px; font-size: 0.8rem; font-weight: 600; cursor: pointer; transition: all 0.2s;">
-              ❤️ 은혜받았어요 <span id="like-count">0</span>
-            </button>
-            <button id="repeat-btn" onclick="toggleRepeat()" style="background: #fff; border: 1px solid rgba(0,0,0,0.15); color: #666; border-radius: 50px; padding: 6px 16px; font-size: 0.8rem; font-weight: 600; cursor: pointer; transition: all 0.2s;">
-              🔂 한곡 반복
-            </button>
-            <button id="playall-btn" onclick="togglePlayAll()" style="background: #fff; border: 1px solid rgba(0,0,0,0.15); color: #666; border-radius: 50px; padding: 6px 16px; font-size: 0.8rem; font-weight: 600; cursor: pointer; transition: all 0.2s;">
-              🔁 전체 재생
-            </button>
+            <button id="like-btn" onclick="addLike()" style="background: #fff; border: 1px solid #ff4b4b; color: #ff4b4b; border-radius: 50px; padding: 6px 14px; font-size: 0.75rem; font-weight: 600; cursor: pointer;">❤️ 은혜받았어요 <span id="like-count">0</span></button>
+            <button id="repeat-btn" onclick="toggleRepeat()" style="background: #fff; border: 1px solid rgba(0,0,0,0.15); color: #666; border-radius: 50px; padding: 6px 14px; font-size: 0.75rem; font-weight: 600; cursor: pointer;">🔂 한곡 반복</button>
+            <button id="playall-btn" onclick="togglePlayAll()" style="background: #fff; border: 1px solid rgba(0,0,0,0.15); color: #666; border-radius: 50px; padding: 6px 14px; font-size: 0.75rem; font-weight: 600; cursor: pointer;">🔁 전체 재생</button>
           </div>
         </div>
 
-        <div style="display: flex; flex-direction: column; gap: 8px;">
-          <button onclick="changeSong('song1.mp3', '1. 너는 내 것이라')" style="text-align: left; padding: 12px 16px; background: #fff; border: 1px solid rgba(0,0,0,0.08); border-radius: 10px; cursor: pointer; font-size: 0.85rem; color: #444; font-family: 'Noto Sans KR', sans-serif; transition: 0.2s;" onmouseover="this.style.borderColor='#A07830'; this.style.color='#A07830'" onmouseout="this.style.borderColor='rgba(0,0,0,0.08)'; this.style.color='#444'">🎵 1. 너는 내 것이라</button>
-          <button onclick="changeSong('song2.mp3', '2. 나의 목자 되시니')" style="text-align: left; padding: 12px 16px; background: #fff; border: 1px solid rgba(0,0,0,0.08); border-radius: 10px; cursor: pointer; font-size: 0.85rem; color: #444; font-family: 'Noto Sans KR', sans-serif; transition: 0.2s;" onmouseover="this.style.borderColor='#A07830'; this.style.color='#A07830'" onmouseout="this.style.borderColor='rgba(0,0,0,0.08)'; this.style.color='#444'">🎵 2. 나의 목자 되시니</button>
-          <button onclick="changeSong('song3.mp3', '3. 내게로 오라')" style="text-align: left; padding: 12px 16px; background: #fff; border: 1px solid rgba(0,0,0,0.08); border-radius: 10px; cursor: pointer; font-size: 0.85rem; color: #444; font-family: 'Noto Sans KR', sans-serif; transition: 0.2s;" onmouseover="this.style.borderColor='#A07830'; this.style.color='#A07830'" onmouseout="this.style.borderColor='rgba(0,0,0,0.08)'; this.style.color='#444'">🎵 3. 내게로 오라</button>
-          <button onclick="changeSong('song4.mp3', '4. Shine on me')" style="text-align: left; padding: 12px 16px; background: #fff; border: 1px solid rgba(0,0,0,0.08); border-radius: 10px; cursor: pointer; font-size: 0.85rem; color: #444; font-family: 'Noto Sans KR', sans-serif; transition: 0.2s;" onmouseover="this.style.borderColor='#A07830'; this.style.color='#A07830'" onmouseout="this.style.borderColor='rgba(0,0,0,0.08)'; this.style.color='#444'">🎵 4. Shine on me</button>
-          <button onclick="changeSong('song5.mp3', '5. 주와 함께 Run&Fly')" style="text-align: left; padding: 12px 16px; background: #fff; border: 1px solid rgba(0,0,0,0.08); border-radius: 10px; cursor: pointer; font-size: 0.85rem; color: #444; font-family: 'Noto Sans KR', sans-serif; transition: 0.2s;" onmouseover="this.style.borderColor='#A07830'; this.style.color='#A07830'" onmouseout="this.style.borderColor='rgba(0,0,0,0.08)'; this.style.color='#444'">🎵 5. 주와 함께 Run&Fly</button>
-          <button onclick="changeSong('song6.mp3', '6. 주와 함께 걷는 새 길')" style="text-align: left; padding: 12px 16px; background: #fff; border: 1px solid rgba(0,0,0,0.08); border-radius: 10px; cursor: pointer; font-size: 0.85rem; color: #444; font-family: 'Noto Sans KR', sans-serif; transition: 0.2s;" onmouseover="this.style.borderColor='#A07830'; this.style.color='#A07830'" onmouseout="this.style.borderColor='rgba(0,0,0,0.08)'; this.style.color='#444'">🎵 6. 주와 함께 걷는 새 길</button>
-          <button onclick="changeSong('song7.mp3', '7. 하나님의 평강')" style="text-align: left; padding: 12px 16px; background: #fff; border: 1px solid rgba(0,0,0,0.08); border-radius: 10px; cursor: pointer; font-size: 0.85rem; color: #444; font-family: 'Noto Sans KR', sans-serif; transition: 0.2s;" onmouseover="this.style.borderColor='#A07830'; this.style.color='#A07830'" onmouseout="this.style.borderColor='rgba(0,0,0,0.08)'; this.style.color='#444'">🎵 7. 하나님의 평강</button>
-          <button onclick="changeSong('song8.mp3', '8. 우리의 소망')" style="text-align: left; padding: 12px 16px; background: #fff; border: 1px solid rgba(0,0,0,0.08); border-radius: 10px; cursor: pointer; font-size: 0.85rem; color: #444; font-family: 'Noto Sans KR', sans-serif; transition: 0.2s;" onmouseover="this.style.borderColor='#A07830'; this.style.color='#A07830'" onmouseout="this.style.borderColor='rgba(0,0,0,0.08)'; this.style.color='#444'">🎵 8. 우리의 소망</button>
+        <div id="playlist-container" style="display: flex; flex-direction: column; gap: 8px;">
+          <button onclick="changeSong('song1.mp3', '1. 첫 번째 찬양 제목')" style="text-align: left; padding: 12px 16px; background: #fff; border: 1px solid rgba(0,0,0,0.08); border-radius: 10px; cursor: pointer; font-size: 0.85rem;">🎵 1. 첫 번째 찬양 제목</button>
+          <button onclick="changeSong('song2.mp3', '2. 두 번째 찬양 제목')" style="text-align: left; padding: 12px 16px; background: #fff; border: 1px solid rgba(0,0,0,0.08); border-radius: 10px; cursor: pointer; font-size: 0.85rem;">🎵 2. 두 번째 찬양 제목</button>
+          <button onclick="changeSong('song3.mp3', '3. 세 번째 찬양 제목')" style="text-align: left; padding: 12px 16px; background: #fff; border: 1px solid rgba(0,0,0,0.08); border-radius: 10px; cursor: pointer; font-size: 0.85rem;">🎵 3. 세 번째 찬양 제목</button>
+          <button onclick="changeSong('song4.mp3', '4. 네 번째 찬양 제목')" style="text-align: left; padding: 12px 16px; background: #fff; border: 1px solid rgba(0,0,0,0.08); border-radius: 10px; cursor: pointer; font-size: 0.85rem;">🎵 4. 네 번째 찬양 제목</button>
+          <button onclick="changeSong('song5.mp3', '5. 다섯 번째 찬양 제목')" style="text-align: left; padding: 12px 16px; background: #fff; border: 1px solid rgba(0,0,0,0.08); border-radius: 10px; cursor: pointer; font-size: 0.85rem;">🎵 5. 다섯 번째 찬양 제목</button>
+          <button onclick="changeSong('song6.mp3', '6. 여섯 번째 찬양 제목')" style="text-align: left; padding: 12px 16px; background: #fff; border: 1px solid rgba(0,0,0,0.08); border-radius: 10px; cursor: pointer; font-size: 0.85rem;">🎵 6. 여섯 번째 찬양 제목</button>
+          <button onclick="changeSong('song7.mp3', '7. 일곱 번째 찬양 제목')" style="text-align: left; padding: 12px 16px; background: #fff; border: 1px solid rgba(0,0,0,0.08); border-radius: 10px; cursor: pointer; font-size: 0.85rem;">🎵 7. 일곱 번째 찬양 제목</button>
+          <button onclick="changeSong('song8.mp3', '8. 여덟 번째 찬양 제목')" style="text-align: left; padding: 12px 16px; background: #fff; border: 1px solid rgba(0,0,0,0.08); border-radius: 10px; cursor: pointer; font-size: 0.85rem;">🎵 8. 여덟 번째 찬양 제목</button>
         </div>
-
       </div>
     </div>
   </div>
 </div>
 
 <div class="rule"></div>
-<div class="rule"></div>
 
-<!-- SERMONS -->
 <div class="section section-dark" id="sermons">
   <div class="inner">
     <div class="s-head reveal">
@@ -1399,7 +1387,6 @@ footer {
       <h2 class="s-title">설교 영상 모아보기</h2>
       <p class="s-desc">언제 어디서든 다시 들을 수 있습니다. 말씀이 필요한 순간 찾아오세요.</p>
     </div>
-
     <div class="video-grid reveal">
       <div class="video-item">
         <div class="v-thumb"></div>
@@ -1417,562 +1404,74 @@ footer {
           <div class="v-date">2025.03.30</div>
         </div>
       </div>
-      <div class="video-item">
-        <div class="v-thumb"></div>
-        <div class="v-info">
-          <div class="v-title">부활의 소망으로 살아가는 삶</div>
-          <div class="v-meta">로마서 8:11 · 부활주일 특별 설교</div>
-          <div class="v-date">2025.03.23</div>
-        </div>
-      </div>
-      <div class="video-item">
-        <div class="v-thumb"></div>
-        <div class="v-info">
-          <div class="v-title">기도는 관계입니다</div>
-          <div class="v-meta">마태복음 6:9-13 · 수요 설교</div>
-          <div class="v-date">2025.03.19</div>
-        </div>
-      </div>
-    </div>
-
-    <a href="#" class="more-link reveal">모든 설교 영상 보기 →</a>
-  </div>
-</div>
-
-<div class="rule"></div>
-
-<!-- CANAAN -->
-<div class="section" id="canaan">
-  <div class="inner">
-    <div class="canaan-section reveal">
-      <div class="canaan-left">
-        <h2 class="s-title">교회를 떠났지만<br>하나님은 놓지<br>않으셨나요?</h2>
-        <p class="s-desc">상처가 있어도 괜찮습니다. On 양화교회는 당신이 어디 있든 함께하고 싶습니다.</p>
-        <div class="canaan-tags">
-          <span class="c-tag">교회에 상처받은 분</span>
-          <span class="c-tag">집에서 신앙생활 하는 분</span>
-          <span class="c-tag">신앙이 식어가는 분</span>
-          <span class="c-tag">교회가 멀리 있는 분</span>
-          <span class="c-tag">신앙에 의문이 생긴 분</span>
-        </div>
-        <a href="#" class="btn-gold">성도 등록하기 →</a>
-      </div>
-      <div class="canaan-cards">
-        <div class="c-card">
-          <div class="c-icon">💬</div>
-          <div>
-            <div class="c-title">1:1 온라인 상담</div>
-            <div class="c-desc">목사님과 온라인으로 만납니다. 신앙 고민, 삶의 어려움, 무엇이든 나눌 수 있습니다.</div>
-          </div>
-        </div>
-        <div class="c-card">
-          <div class="c-icon">📧</div>
-          <div>
-            <div class="c-title">주간 말씀 뉴스레터</div>
-            <div class="c-desc">매주 월요일, 주일 설교 요약과 이번 주 묵상 말씀을 이메일로 보내드립니다.</div>
-          </div>
-        </div>
-        <div class="c-card">
-          <div class="c-icon">🙏</div>
-          <div>
-            <div class="c-title">온라인 예배 참여</div>
-            <div class="c-desc">등록 없이도 자유롭게 예배에 참여할 수 있습니다. 준비됐을 때 등록해 주세요.</div>
-          </div>
-        </div>
-        <div class="c-card">
-          <div class="c-icon">💝</div>
-          <div>
-            <div class="c-title">온라인 심방</div>
-            <div class="c-desc">필요하시면 목사님이 줌으로 직접 찾아갑니다. 편한 시간에 요청해 주세요.</div>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </div>
-
-<div class="rule"></div>
-
-<!-- COMMUNITY -->
-<div class="section section-dark" id="community">
-  <div class="inner">
-    <div class="s-head reveal">
-      <div class="s-label">Community</div>
-      <h2 class="s-title">구역 모임 & 청년 모임</h2>
-      <p class="s-desc">온라인으로 연결되는 작은 공동체. 함께할 때 더 깊어지는 신앙입니다.</p>
-    </div>
-
-    <div class="community-grid reveal">
-      <div class="comm-card gold">
-        <span class="comm-badge badge-gold">구역 모임</span>
-        <div class="comm-title">온라인 구역 모임</div>
-        <div class="comm-desc">지역과 상황에 관계없이 온라인으로 함께 모이는 구역 모임입니다. 말씀 나눔과 기도, 삶을 함께하는 작은 공동체를 경험하세요.</div>
-        <div class="comm-details"></div>
-          <div class="comm-detail">주 1회 정기 모임</div>
-          <div class="comm-detail">5~8명 소규모 운영</div>
-          <div class="comm-detail">모임 시간은 그룹별 협의</div>
-        </div>
-        <a href="#" class="btn-gold" style="font-size: 0.82rem; padding: 12px 24px; display: inline-block;">구역 모임 신청 →</a>
-      </div>
-
-      <div class="comm-card sage">
-        <span class="comm-badge badge-green">청년 모임</span>
-        <div class="comm-title">온라인 청년 모임</div>
-        <div class="comm-desc">20~30대 청년들이 함께 모이는 온라인 청년부입니다. 신앙과 삶, 진로와 관계에 대해 함께 나누며 성장합니다.</div>
-        <div class="comm-details">
-          <div class="comm-detail">카카오톡으로 소통</div>
-          <div class="comm-detail">20~30대 청년 누구나</div>
-        </div>
-        <a href="#" class="btn-outline" style="font-size: 0.82rem; padding: 12px 24px; display: inline-block;">청년 모임 신청 →</a>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="rule"></div>
-
-<!-- PRAYER -->
-<div class="section" id="prayer">
-  <div class="inner">
-    <div class="s-head center reveal">
-      <div class="s-label">Prayer Request</div>
-      <h2 class="s-title">기도 제목 나눔</h2>
-      <p class="s-desc">혼자 지지 말고, 함께 기도하겠습니다.</p>
-    </div>
-
-    <div class="prayer-layout reveal">
-      <div class="prayer-form-wrap">
-        <div class="form-row">
-          <div class="form-group">
-            <label>이름 (익명 가능)</label>
-            <input type="text" placeholder="홍길동 or 익명">
-          </div>
-          <div class="form-group">
-            <label>공개 범위</label>
-            <select>
-              <option>목사님께만 (비공개)</option>
-              <option>전체 공개</option>
-            </select>
-          </div>
-        </div>
-        <div class="form-group">
-          <label>기도 제목</label>
-          <textarea placeholder="기도 제목을 자유롭게 적어주세요. 무엇이든 괜찮습니다."></textarea>
-        </div>
-        <button class="btn-form">기도 제목 올리기</button>
-      </div>
-
-      <div class="prayer-list">
-        <div class="prayer-item">
-          <div class="prayer-meta">
-            <span class="prayer-name">집사님 A</span>
-            <span class="prayer-tag-small">공개</span>
-          </div>
-          <div class="prayer-text">남편의 건강 회복을 위해 기도해 주세요. 최근 입원 중입니다.</div>
-        </div>
-        <div class="prayer-item">
-          <div class="prayer-meta">
-            <span class="prayer-name">익명</span>
-            <span class="prayer-tag-small">공개</span>
-          </div>
-          <div class="prayer-text">취업 준비 중입니다. 하나님의 인도하심을 구합니다.</div>
-        </div>
-        <div class="prayer-item">
-          <div class="prayer-meta">
-            <span class="prayer-name">형제 B</span>
-            <span class="prayer-tag-small">공개</span>
-          </div>
-          <div class="prayer-text">오랫동안 교회를 떠났다가 이곳을 찾았습니다. 신앙 회복을 위해 기도해 주세요.</div>
-        </div>
-        <div class="prayer-item">
-          <div class="prayer-meta">
-            <span class="prayer-name">자매 C</span>
-            <span class="prayer-tag-small">공개</span>
-          </div>
-          <div class="prayer-text">부모님의 구원을 위해 오랫동안 기도하고 있습니다. 함께해 주세요.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="rule"></div>
-
-<!-- BIBLE -->
-<div class="section section-dark" id="bible">
-  <div class="inner">
-    <div class="s-head reveal">
-      <div class="s-label">Bible Reading</div>
-      <h2 class="s-title">성경통독 & 성경 개관</h2>
-      <p class="s-desc">성경을 처음부터 끝까지, 또는 원하는 성경부터 시작해보세요.</p>
-    </div>
-
-    <div class="bible-grid reveal">
-      <div class="b-card">
-        <span class="b-icon">📅</span>
-        <div class="b-name">1년 성경통독</div>
-        <div class="b-sub">매일 분량 제공</div>
-      </div>
-      <div class="b-card">
-        <span class="b-icon">📖</span>
-        <div class="b-name">창세기 개관</div>
-        <div class="b-sub">영상 + 자료</div>
-      </div>
-      <div class="b-card">
-        <span class="b-icon">📖</span>
-        <div class="b-name">시편 묵상</div>
-        <div class="b-sub">영상 + 자료</div>
-      </div>
-      <div class="b-card">
-        <span class="b-icon">📖</span>
-        <div class="b-name">마태복음 개관</div>
-        <div class="b-sub">영상 + 자료</div>
-      </div>
-      <div class="b-card">
-        <span class="b-icon">📖</span>
-        <div class="b-name">로마서 강해</div>
-        <div class="b-sub">영상 + 자료</div>
-      </div>
-      <div class="b-card">
-        <span class="b-icon">📖</span>
-        <div class="b-name">요한복음 개관</div>
-        <div class="b-sub">영상 + 자료</div>
-      </div>
-      <div class="b-card">
-        <span class="b-icon">📖</span>
-        <div class="b-name">요한계시록</div>
-        <div class="b-sub">영상 + 자료</div>
-      </div>
-      <div class="b-card">
-        <span class="b-icon">＋</span>
-        <div class="b-name">전체 보기</div>
-        <div class="b-sub">모든 성경 개관</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="rule"></div>
-
-<!-- NOTICE -->
-<div class="section" id="notice">
-  <div class="inner">
-    <div class="s-head reveal">
-      <div class="s-label">Church News</div>
-      <h2 class="s-title">교회 소식 & 공지</h2>
-    </div>
-
-    <div class="notice-list reveal">
-      <div class="n-item">
-        <span class="n-badge nb-new">NEW</span>
-        <div class="n-title">부활절 특별 온라인 예배 안내</div>
-        <div class="n-date">2025.04.01</div>
-      </div>
-      <div class="n-item">
-        <span class="n-badge nb-event">행사</span>
-        <div class="n-title">온라인 새가족 환영회 — 4월 13일 (일) 오후 2시</div>
-        <div class="n-date">2025.03.28</div>
-      </div>
-      <div class="n-item">
-        <span class="n-badge nb-notice">공지</span>
-        <div class="n-title">구역 모임 & 청년 모임 참여자 모집 안내</div>
-        <div class="n-date">2025.03.25</div>
-      </div>
-      <div class="n-item">
-        <span class="n-badge nb-event">행사</span>
-        <div class="n-title">5월 온라인 수련회 사전 신청 오픈</div>
-        <div class="n-date">2025.03.20</div>
-      </div>
-      <div class="n-item">
-        <span class="n-badge nb-notice">공지</span>
-        <div class="n-title">카카오톡 채널 개설 안내 — 매일 말씀 받아보세요</div>
-        <div class="n-date">2025.03.15</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="rule"></div>
-
-<!-- OFFERING -->
-<div class="section section-dark" id="offering">
-  <div class="inner">
-    <div class="s-head reveal">
-      <div class="s-label">Offering</div>
-      <h2 class="s-title">온라인 헌금 안내</h2>
-    </div>
-
-    <div class="offering-layout reveal">
-      <div class="offering-main">
-        <div>
-          <h3>On 양화교회<br>사역을 함께<br>지원해 주세요</h3>
-          <p>헌금은 온라인 사역과 성도를 위한 프로그램 운영에 사용됩니다. 영수증은 이메일로 발송해 드립니다.</p>
-        </div>
-        <div class="offering-accounts">
-          <div class="acc-item">
-            <div class="acc-icon">🏦</div>
-            <div>
-              <div class="acc-name">국민은행 000-0000-0000-00</div>
-              <div class="acc-sub">예금주: 양화교회</div>
-            </div>
-          </div>
-          <div class="acc-item">
-            <div class="acc-icon">💛</div>
-            <div>
-              <div class="acc-name">카카오페이</div>
-              <div class="acc-sub">@양화교회 검색 후 송금</div>
-            </div>
-          </div>
-          <div class="acc-item">
-            <div class="acc-icon">💙</div>
-            <div>
-              <div class="acc-name">토스</div>
-              <div class="acc-sub">@양화교회 검색 후 송금</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="offering-info-cards">
-        <div class="of-info-card">
-          <h4>헌금 종류</h4>
-          <p>십일조, 감사헌금, 주일헌금, 선교헌금 모두 가능합니다. 이체 시 이름과 헌금 종류를 메모에 남겨주세요.</p>
-        </div>
-        <div class="of-info-card">
-          <h4>영수증 발급</h4>
-          <p>연말정산용 기부금 영수증 발급 가능합니다. 이메일로 신청해 주시면 발송해 드립니다.</p>
-        </div>
-        <div class="of-info-card">
-          <h4>사역 보고</h4>
-          <p>헌금이 어떻게 쓰이는지 매월 뉴스레터를 통해 투명하게 보고드립니다.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-inner">
-    <div class="footer-top">
-      <div>
-        <div class="f-logo">
-          <span class="f-on">On</span>&nbsp;양화교회
-        </div>
-        <div class="f-about">교회 밖에 있는 모든 분들을 향해 열린 교회입니다. 어디에 있든, 어떤 상황에 있든 환영합니다.</div>
-        <div class="f-socials">
-          <a class="f-social" href="#" title="유튜브">▶</a>
-          <a class="f-social" href="#" title="인스타그램">📷</a>
-          <a class="f-social" href="#" title="카카오채널">💬</a>
-        </div>
-      </div>
-      <div class="f-col">
-        <h4>예배 & 사역</h4>
-        <a href="#worship">예배 안내</a>
-        <a href="#community">구역·청년 모임</a>
-        <a href="#prayer">기도 제목</a>
-        <a href="#offering">온라인 헌금</a>
-      </div>
-      <div class="f-col">
-        <h4>말씀 & 성도</h4>
-        <a href="#sermons">설교 영상</a>
-        <a href="#bible">성경통독</a>
-        <a href="#canaan">성도 등록</a>
-        <a href="#notice">교회 소식</a>
-      </div>
-      <div class="f-col">
-        <h4>연락처</h4>
-        <a href="#">이메일 문의</a>
-        <a href="#">카카오톡 채널</a>
-        <a href="#">유튜브 채널</a>
-        <a href="#">인스타그램</a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <div class="f-copy">© 2025 On 양화교회 · All rights reserved</div>
-      <div class="f-verse">"두 세 사람이 내 이름으로 모인 곳에는 나도 그들 중에 있느니라" — 마 18:20</div>
-    </div>
-  </div>
-</footer>
 
 <script>
-  // Header scroll
-  const header = document.getElementById('header');
-  window.addEventListener('scroll', () => {
-    header.classList.toggle('scrolled', window.scrollY > 40);
-  });
+  let header = document.getElementById('header');
+  window.addEventListener('scroll', () => { header.classList.toggle('scrolled', window.scrollY > 40); });
 
-  // Mobile nav
-  document.getElementById('hamburger').addEventListener('click', () => {
-    document.getElementById('mobNav').classList.add('open');
-  });
-  document.getElementById('mobClose').addEventListener('click', closeMob);
-  function closeMob() {
-    document.getElementById('mobNav').classList.remove('open');
-  }
-
-  // Reveal on scroll
-  const reveals = document.querySelectorAll('.reveal');
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach((e, i) => {
-      if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('visible'), i * 60);
-        obs.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.08 });
-  reveals.forEach(r => obs.observe(r));
-</script>
-<script>
-  // 1. 헤더 배경 & 모바일 메뉴 마법 (원래 있던 기능)
-  const header = document.getElementById('header');
-  window.addEventListener('scroll', () => {
-    header.classList.toggle('scrolled', window.scrollY > 40);
-  });
-
-  document.getElementById('hamburger').addEventListener('click', () => {
-    document.getElementById('mobNav').classList.add('open');
-  });
-  document.getElementById('mobClose').addEventListener('click', closeMob);
-  function closeMob() {
-    document.getElementById('mobNav').classList.remove('open');
-  }
-
-  // 2. 스크롤할 때 스르륵 나타나는 마법 (원래 있던 기능)
-  const reveals = document.querySelectorAll('.reveal');
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach((e, i) => {
-      if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('visible'), i * 60);
-        obs.unobserve(e.target);
-      }
-    });
+  let reveals = document.querySelectorAll('.reveal');
+  let obs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => { if (e.isIntersecting) { setTimeout(() => e.target.classList.add('visible'), i * 60); obs.unobserve(e.target); } });
   }, { threshold: 0.08 });
   reveals.forEach(r => obs.observe(r));
 
-  // 3. 찬양 재생기 & 좋아요 & 연속듣기 마법 (새로 추가된 기능!)
+  // 플레이어 핵심 기능
   let currentLikes = 0;
-  let currentFile = 'song1.mp3'; 
+  let currentFile = 'song1.mp3';
   let isRepeat = false;
   let isPlayAll = false;
 
   function changeSong(fileName, songTitle) {
-    const player = document.getElementById('main-audio');
-    const titleText = document.getElementById('now-playing-title');
-    
-    currentFile = fileName; 
+    let player = document.getElementById('main-audio');
+    let titleText = document.getElementById('now-playing-title');
+    currentFile = fileName;
     player.src = fileName;
     titleText.innerText = songTitle;
-    
     currentLikes = 0;
     document.getElementById('like-count').innerText = currentLikes;
-    
     player.play();
   }
 
   function addLike() {
     currentLikes++;
     document.getElementById('like-count').innerText = currentLikes;
-    const btn = document.getElementById('like-btn');
-    btn.style.transform = 'scale(1.1)';
-    btn.style.background = '#ffebed';
-    setTimeout(() => {
-      btn.style.transform = 'scale(1)';
-      btn.style.background = '#fff';
-    }, 200);
   }
 
   function toggleRepeat() {
     isRepeat = !isRepeat;
-    if(isRepeat) isPlayAll = false; 
-    updateButtonStyles();
+    isPlayAll = false;
+    updateStyles();
   }
 
   function togglePlayAll() {
     isPlayAll = !isPlayAll;
-    if(isPlayAll) isRepeat = false; 
-    updateButtonStyles();
+    isRepeat = false;
+    updateStyles();
   }
 
-  function updateButtonStyles() {
-    const repeatBtn = document.getElementById('repeat-btn');
-    const playAllBtn = document.getElementById('playall-btn');
-    
-    if(isRepeat) {
-      repeatBtn.style.background = '#A07830';
-      repeatBtn.style.color = '#fff';
-      repeatBtn.style.borderColor = '#A07830';
-    } else {
-      repeatBtn.style.background = '#fff';
-      repeatBtn.style.color = '#666';
-      repeatBtn.style.borderColor = 'rgba(0,0,0,0.15)';
-    }
-
-    if(isPlayAll) {
-      playAllBtn.style.background = '#A07830';
-      playAllBtn.style.color = '#fff';
-      playAllBtn.style.borderColor = '#A07830';
-    } else {
-      playAllBtn.style.background = '#fff';
-      playAllBtn.style.color = '#666';
-      playAllBtn.style.borderColor = 'rgba(0,0,0,0.15)';
-    }
+  function updateStyles() {
+    document.getElementById('repeat-btn').style.background = isRepeat ? '#A07830' : '#fff';
+    document.getElementById('repeat-btn').style.color = isRepeat ? '#fff' : '#666';
+    document.getElementById('playall-btn').style.background = isPlayAll ? '#A07830' : '#fff';
+    document.getElementById('playall-btn').style.color = isPlayAll ? '#fff' : '#666';
   }
 
-  window.addEventListener('DOMContentLoaded', () => {
-    const player = document.getElementById('main-audio');
-    if(player) {
-      player.addEventListener('ended', function() {
-        if (isRepeat) {
-          this.currentTime = 0;
-          this.play();
-        } else if (isPlayAll) {
-          let buttons = document.querySelectorAll('button[onclick^="changeSong"]');
-          let clickedNext = false;
-          for (let i = 0; i < buttons.length; i++) {
-            if (buttons[i].getAttribute('onclick').includes(currentFile)) {
-              let nextIndex = i + 1;
-              if (nextIndex >= buttons.length) nextIndex = 0; 
-              buttons[nextIndex].click();
-              clickedNext = true;
-              break;
-            }
-          }
-          if(!clickedNext && buttons.length > 0) buttons[0].click();
+  document.getElementById('main-audio').addEventListener('ended', function() {
+    if (isRepeat) { this.play(); }
+    else if (isPlayAll) {
+      let buttons = document.querySelectorAll('#playlist-container button');
+      for (let i = 0; i < buttons.length; i++) {
+        if (buttons[i].getAttribute('onclick').includes(currentFile)) {
+          let next = (i + 1) % buttons.length;
+          buttons[next].click();
+          break;
         }
-      });
+      }
     }
   });
 </script>
 </body>
 </html>
-</body>
-
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
